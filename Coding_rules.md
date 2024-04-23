@@ -14,6 +14,9 @@
 - bool型を返す変数やメソッドには`is/has/can`を使用すること(以下「bool命名規則」)  
 `isGround`、`hasItem`、`canSwim`
 
+- bool型の命名時、否定する単語を入れない  
+×`isNotDead`
+
 - abstractクラスは最後に`Base`をつけること  
 `AbstractBase`
 
@@ -47,6 +50,8 @@
 
 - interfaceは理由が無い限り明示的な実装をする  
 `void IHoge.Method() { }`
+
+- 副作用のあるコードを書かない
 
 ## 改行
 - 計算式が長くなる場合、改行は**記号の前**で行う
