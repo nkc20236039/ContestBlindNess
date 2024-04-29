@@ -144,11 +144,7 @@
             "m_Id": "750179838b794a68921317b0c4cc8f2e"
         }
     ],
-    "m_StickyNoteDatas": [
-        {
-            "m_Id": "2af6d34d2aa940ebb6bf8615fa63642c"
-        }
-    ],
+    "m_StickyNoteDatas": [],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -1533,26 +1529,6 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
-    }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
-    "m_ObjectId": "2af6d34d2aa940ebb6bf8615fa63642c",
-    "m_Title": "New Note",
-    "m_Content": "グリッドの設定",
-    "m_TextSize": 0,
-    "m_Theme": 0,
-    "m_Position": {
-        "serializedVersion": "2",
-        "x": -1957.0,
-        "y": -330.0,
-        "width": 200.0,
-        "height": 160.0
-    },
-    "m_Group": {
-        "m_Id": "750179838b794a68921317b0c4cc8f2e"
     }
 }
 

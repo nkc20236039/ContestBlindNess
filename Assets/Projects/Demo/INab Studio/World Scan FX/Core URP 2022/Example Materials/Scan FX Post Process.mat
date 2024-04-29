@@ -12,10 +12,11 @@ Material:
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _FOVMASKENABLED
   - _OVERLAY_GRIDANDEDGEDETECTION
-  m_InvalidKeywords: []
+  - _OVERLAY_SCREENTEXTURE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -39,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ScreenTexture:
-        m_Texture: {fileID: 2800000, guid: aacf3a9490cab7546ad3e753762c229d, type: 3}
+        m_Texture: {fileID: 2800000, guid: bf3a55c281459924e8d85653e6a9a5d6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -57,18 +58,18 @@ Material:
     m_Ints: []
     m_Floats:
     - _10_10: -10
-    - _CurrentScanValue: 0.29
+    - _CurrentScanValue: 0.32
     - _DepthHardness: 1
     - _DepthPower: 5
     - _DepthThreshold: 1
     - _EdgeDetectionMultiplier: 1
-    - _EdgeHardness: 0.33
+    - _EdgeHardness: 0
     - _EdgeMultiplier: 1
     - _EdgePower: 10
-    - _FovMask: 0.5
-    - _FovMaskSmoothness: 1
-    - _Frequency: 0.84
-    - _GridMultiplier: 0.05
+    - _FovMask: 0.341
+    - _FovMaskSmoothness: 0
+    - _Frequency: 1
+    - _GridMultiplier: 1
     - _HighlightMultiplier: 0.8
     - _HighlightPower: 3
     - _MaskHardness: 0.8
@@ -79,24 +80,24 @@ Material:
     - _NormalsPower: 2.14
     - _OVERLAY: 3
     - _OriginOffset: 0
-    - _OverlayIntensity: 10
+    - _OverlayIntensity: 0
     - _OverlayMultiplier: 1
     - _OverlayPower: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Ratio: 0.5
-    - _ScreenTextureTiling: -10.42
+    - _Ratio: 0
+    - _ScreenTextureTiling: 33.69
     - _Size: 8
     - _SizeAdjust: 0
     - _Test: 0
-    - _Thickness: 0.97
+    - _Thickness: 2.03
     - _test: 1
     m_Colors:
-    - _EdgeColor: {r: 0.31592825, g: 0.6318566, b: 3.0171156, a: 1}
+    - _EdgeColor: {r: 16.30875, g: 32.617504, b: 155.74858, a: 1}
     - _Forward: {r: 0, g: 0, b: 1, a: 0}
-    - _HighlightColor: {r: 0.8530669, g: 0.9393322, b: 1.830739, a: 1}
+    - _HighlightColor: {r: 0.2922994, g: 1.4786904, b: 12.393496, a: 1}
     - _Origin: {r: 0.20000005, g: 1.375, b: -4, a: 0}
-    - _OverlayColor: {r: 0, g: 9.330131, b: 178.20636, a: 0}
+    - _OverlayColor: {r: 0, g: 8.739604, b: 166.92725, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8331459826602276235
 MonoBehaviour:

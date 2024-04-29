@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace INab.WorldScanFX
 {
@@ -16,8 +17,9 @@ namespace INab.WorldScanFX
         // Update is called once per frame
         void Update()
         {
+            var nKey = Keyboard.current.nKey;
             // Start a new scan when the N key is pressed
-            if (Input.GetKeyDown(KeyCode.N))
+            if (nKey.wasPressedThisFrame)
             {
                 // Ensure scanFX reference is not null
                 if (scanFX != null)

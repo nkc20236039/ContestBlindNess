@@ -126,7 +126,7 @@ Material:
     - _Cull: 2
     - _CullMode: 2
     - _CullModeForward: 2
-    - _CurrentScanValue: 0.29
+    - _CurrentScanValue: 0.33
     - _Cutoff: 0
     - _DepthOffsetEnable: 0
     - _Distance_Offset: -4.5

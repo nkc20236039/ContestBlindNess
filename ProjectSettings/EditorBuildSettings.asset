@@ -6,6 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Projects/Demo/INab Studio/World Scan FX/Core URP 2022/Example Scenes/Demo
+      URP 2022.unity
+    guid: 82b081b3cfef2c9478be8cefce8b91ec
+  - enabled: 0
     path: Assets/Projects/Scenes/_TemplateScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}
