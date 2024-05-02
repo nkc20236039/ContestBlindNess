@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ScreenTexture:
-        m_Texture: {fileID: 2800000, guid: bf3a55c281459924e8d85653e6a9a5d6, type: 3}
+        m_Texture: {fileID: 2800000, guid: aacf3a9490cab7546ad3e753762c229d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -61,43 +61,43 @@ Material:
     - _CurrentScanValue: 0.32
     - _DepthHardness: 1
     - _DepthPower: 5
-    - _DepthThreshold: 1
+    - _DepthThreshold: 1.16
     - _EdgeDetectionMultiplier: 1
-    - _EdgeHardness: 0
+    - _EdgeHardness: 0.33
     - _EdgeMultiplier: 1
     - _EdgePower: 10
     - _FovMask: 0.341
-    - _FovMaskSmoothness: 0
+    - _FovMaskSmoothness: 1
     - _Frequency: 1
-    - _GridMultiplier: 1
+    - _GridMultiplier: 0.92
     - _HighlightMultiplier: 0.8
     - _HighlightPower: 3
     - _MaskHardness: 0.8
     - _MaskPower: 1
     - _MaskRadius: 90
-    - _NormalsHardness: 0.351
-    - _NormalsOffset: 0.1
-    - _NormalsPower: 2.14
+    - _NormalsHardness: 0.21
+    - _NormalsOffset: 0.01
+    - _NormalsPower: 2.3
     - _OVERLAY: 3
     - _OriginOffset: 0
-    - _OverlayIntensity: 0
-    - _OverlayMultiplier: 1
+    - _OverlayIntensity: -5.1
+    - _OverlayMultiplier: 0.95
     - _OverlayPower: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Ratio: 0
-    - _ScreenTextureTiling: 33.69
+    - _Ratio: 0.5
+    - _ScreenTextureTiling: -10.42
     - _Size: 8
     - _SizeAdjust: 0
     - _Test: 0
-    - _Thickness: 2.03
+    - _Thickness: 1.54
     - _test: 1
     m_Colors:
-    - _EdgeColor: {r: 16.30875, g: 32.617504, b: 155.74858, a: 1}
-    - _Forward: {r: 0, g: 0, b: 1, a: 0}
-    - _HighlightColor: {r: 0.2922994, g: 1.4786904, b: 12.393496, a: 1}
-    - _Origin: {r: 0.20000005, g: 1.375, b: -4, a: 0}
-    - _OverlayColor: {r: 0, g: 8.739604, b: 166.92725, a: 1}
+    - _EdgeColor: {r: 34.95858, g: 69.91717, b: 333.8545, a: 1}
+    - _Forward: {r: 0.74662524, g: -0.11734656, b: 0.6548134, a: 0}
+    - _HighlightColor: {r: 5.210349, g: 5.737239, b: 11.181761, a: 1}
+    - _Origin: {r: -8.36511, g: 4.8920307, b: 1.2576408, a: 0}
+    - _OverlayColor: {r: 0, g: 9.330131, b: 178.20636, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8331459826602276235
 MonoBehaviour:
