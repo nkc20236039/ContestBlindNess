@@ -6,34 +6,6 @@ namespace INab.WorldScanFX
 {
     public abstract class ScanFXBase : MonoBehaviour
     {
-        #region Static
-
-        // Defines the type of overlay effect applied during the scanning process.
-        public enum OverlayType
-        {
-            None, // No overlay.
-            ScreenTexture, // Applies a texture overlay.
-            EdgeDetection, // Highlights edges.
-            Grid, // Displays a grid pattern.
-            GridAndEdgeDetection // Combines grid and edge detection overlays.
-        }
-
-        // Keywords for enabling specific overlay shaders in materials.
-        private static List<string> overlayTypeKeywords = new List<string>()
-        {
-            "_OVERLAY_NONE",
-            "_OVERLAY_SCREENTEXTURE",
-            "_OVERLAY_EDGEDETECTION",
-            "_OVERLAY_GRID",
-            "_OVERLAY_GRIDANDEDGEDETECTION"
-
-        };
-
-        // Keyword for enabling the field of view mask in materials.
-        private static string fovMaskEnabledKeyword = "_FOVMASKENABLED";
-
-        #endregion
-
         #region LogicProperties
 
         // General settings
@@ -141,10 +113,6 @@ namespace INab.WorldScanFX
 
         [Tooltip("Smoothness of the FOV mask edges.")]
         [SerializeField][Range(0f, 1f)] private float _FovMaskSmoothness = 0.2f;
-
-        // Overlay
-        [Tooltip("Type of overlay effect.")]
-        [SerializeField] public OverlayType _OverlayType = OverlayType.None;
 
         [Tooltip("Multiplier for the overlay effect.")]
         [SerializeField][Range(0f, 1f)] private float _OverlayMultiplier = 1f;
@@ -568,28 +536,6 @@ namespace INab.WorldScanFX
                 {
                     UpdateMaterialKeyowrds(material);
                 }
-            }
-        }
-
-        private void UpdateMaterialKeyowrds(Material material)
-        {
-            foreach (var keyword in material.enabledKeywords)
-            {
-                if (overlayTypeKeywords.Contains(keyword.name))
-                {
-                    material.DisableKeyword(keyword);
-                }
-
-                if (keyword.name == fovMaskEnabledKeyword)
-                {
-                    material.DisableKeyword(fovMaskEnabledKeyword);
-                }
-            }
-
-            material.EnableKeyword(overlayTypeKeywords[(int)_OverlayType]);
-            if (_FovMaskEnabled)
-            {
-                material.EnableKeyword(fovMaskEnabledKeyword);
             }
         }
 
