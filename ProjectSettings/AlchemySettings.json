@@ -1,5 +1,5 @@
 {
     "hierarchyObjectMode": 2,
-    "showHierarchyToggles": true,
-    "showComponentIcons": true
+    "showHierarchyToggles": false,
+    "showComponentIcons": false
 }
