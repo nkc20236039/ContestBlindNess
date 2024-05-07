@@ -2,11 +2,11 @@ using Alchemy.Inspector;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerData", menuName ="Data/Player")]
+[CreateAssetMenu(fileName = "PlayerData", menuName = "Data/Player")]
 public class PlayerData : ScriptableObject
 {
     [Title("通常移動のパラメーター")]
-    [LabelText("前方移動の速度"),SerializeField, TabGroup("移動","通常")]
+    [LabelText("前方移動の速度"), SerializeField, TabGroup("移動", "通常")]
     private float fowardSpeed;
     public float FowardSpeed => fowardSpeed;
     [LabelText("後方移動の速度"), SerializeField]
@@ -17,7 +17,7 @@ public class PlayerData : ScriptableObject
     public float SideSpeed => sideSpeed;
 
     [Title("ダッシュのパラメーター")]
-    [LabelText("加速度"), SerializeField,TabGroup("移動", "ダッシュ")]
+    [LabelText("加速度"), SerializeField, TabGroup("移動", "ダッシュ")]
     private float dashSpeed;
     public float DashSpeed => dashSpeed;
     [LabelText("スタミナの消費速度"), SerializeField, TabGroup("移動", "ダッシュ")]
@@ -33,13 +33,13 @@ public class PlayerData : ScriptableObject
     private float maxStamina;
     public float MaxStamina => maxStamina;
 
-    
+
     private float nowStaina;
     public float NowStamina
     {
         get => nowStaina;
 
-        set 
+        set
         {
             if (value < 0f)
             {
@@ -72,6 +72,31 @@ public class PlayerData : ScriptableObject
     private float echoCoolTime;
     public float EchoCoolTime => echoCoolTime;
 
+    private float nowEchoCoolTime;
+    public float NowEchoCoolTime
+    {
+        get => nowEchoCoolTime;
+
+        set
+        {
+            if (value <= 0f)
+            {
+                nowEchoCoolTime = 0f;
+                IsPlayEcho = false;
+            }
+            else if(EchoCoolTime < value)
+            {
+                nowEchoCoolTime = echoCoolTime;
+                IsPlayEcho = true;
+            }
+            else
+            {
+                nowEchoCoolTime = value;
+            }
+        }
+    }
+
+    public bool IsPlayEcho { get; private set; }
 
     [Title("マウスの感度")]
     [LabelText("縦の感度"), SerializeField]

@@ -24,6 +24,8 @@ public class PlayerDashState : PlayerStateBase
 
     public override void OnUpdate()
     {
+        playerData.NowStamina -= playerData.ExpendStamina * Time.deltaTime;
+
         if (Mathf.Approximately(inputDirection.magnitude, 0))
         {
             StateChenge(PlayerStateType.Idel);

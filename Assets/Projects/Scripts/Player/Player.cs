@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     private PlayerInputAction inputAction;
     private Rigidbody playerRigidbody;
     private PlayerMouseMove mouseMove;
+    private EchoProcess echoProcess;
 
     private void Start()
     {
@@ -35,12 +36,14 @@ public class Player : MonoBehaviour
         stateMachine.Register(PlayerStateType.Dash, new PlayerDashState(context));
         stateMachine.Enable(PlayerStateType.Idel);
         mouseMove = new PlayerMouseMove(context);
+        echoProcess = new EchoProcess(context);
     }
 
     private void Update()
     {
         stateMachine.CurrentState.OnUpdate();
         playerHead.transform.rotation = mouseMove.MouseMove();
+        echoProcess.EchoCoolTime();
     }
 
     private void FixedUpdate()
