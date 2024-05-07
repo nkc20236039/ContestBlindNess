@@ -11,7 +11,7 @@ public abstract class PlayerStateBase : IState
     protected PlayerData playerData;
     protected PlayerMovement movement;
     protected PlayerDashProcess dashProcess;
-    protected PlayerMovementSetting setting = new();
+    protected PlayerMovementSetting setting;
     private Action<Enum> changeState;
     public Action<Enum> ChangeState { set => changeState = value; }
     protected Vector3 inputDirection;
@@ -23,6 +23,7 @@ public abstract class PlayerStateBase : IState
         this.context = context;
         this.playerData = context.playerData;
         this.playerRigidbody = context.playerRigidbody;
+        this.setting = context.setting;
 
         movement = new PlayerMovement(context, OnMove);
         dashProcess = new PlayerDashProcess(context, OnDash);

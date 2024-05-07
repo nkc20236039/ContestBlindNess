@@ -24,7 +24,7 @@ public class PlayerMoveState : PlayerStateBase
 
     public override void OnUpdate()
     {
-        if(playerData.NowStamina < playerData.MaxStamina)
+        if (playerData.NowStamina < playerData.MaxStamina)
         {
             dashProcess.DashProcess();
         }

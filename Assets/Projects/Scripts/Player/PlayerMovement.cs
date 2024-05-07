@@ -14,6 +14,7 @@ public class PlayerMovement
         Action<InputAction.CallbackContext> OnMve)
     {
         this.context = context;
+        setting = context.setting;
         playerData = context.playerData;
 
         try

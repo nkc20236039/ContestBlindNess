@@ -8,7 +8,8 @@ public class PlayerMouseMove
     private PlayerData playerData;
     private Vector2 inputDirection;
     private Vector3 lookDirection;
-    private const float MAX_MOVE = 80;
+    private const float MAX_MOVE = 45;
+    private const float MIN_MOVE = -35;
 
     public PlayerMouseMove(PlayerContext context)
     {
@@ -25,7 +26,7 @@ public class PlayerMouseMove
             inputDirection.y * playerData.VerticalSpeed,
             0);
 
-        lookDirection.y = Mathf.Clamp(lookDirection.y, -MAX_MOVE, MAX_MOVE);
+        lookDirection.y = Mathf.Clamp(lookDirection.y, MIN_MOVE, MAX_MOVE);
         return Quaternion.Euler(-lookDirection.y, lookDirection.x, 0);
     }
 

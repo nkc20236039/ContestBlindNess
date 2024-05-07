@@ -1,35 +1,32 @@
-using Alchemy.Inspector;
 using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Data/Player")]
 public class PlayerData : ScriptableObject
 {
-    [Title("通常移動のパラメーター")]
-    [LabelText("前方移動の速度"), SerializeField, TabGroup("移動", "通常")]
+    [SerializeField]
     private float fowardSpeed;
     public float FowardSpeed => fowardSpeed;
-    [LabelText("後方移動の速度"), SerializeField]
+    [SerializeField]
     private float buckSpeed;
     public float BuckSpeed => buckSpeed;
-    [LabelText("左右の移動"), SerializeField]
+    [SerializeField]
     private float sideSpeed;
     public float SideSpeed => sideSpeed;
 
-    [Title("ダッシュのパラメーター")]
-    [LabelText("加速度"), SerializeField, TabGroup("移動", "ダッシュ")]
+    [SerializeField]
     private float dashSpeed;
     public float DashSpeed => dashSpeed;
-    [LabelText("スタミナの消費速度"), SerializeField, TabGroup("移動", "ダッシュ")]
+    [SerializeField]
     private float expendStamina;
     public float ExpendStamina => expendStamina;
-    [LabelText("通常時のスタミナの回復速度"), SerializeField, TabGroup("移動", "ダッシュ")]
+    [SerializeField]
     private float recoverStamina;
     public float RecoverStamina => recoverStamina;
-    [LabelText("クールダウン中のスタミナの回復速度"), SerializeField, TabGroup("移動", "ダッシュ")]
+    [SerializeField]
     private float coolDownStamina;
     public float CooldownStamina => coolDownStamina;
-    [LabelText("スタミナの最大値"), SerializeField, TabGroup("移動", "ダッシュ")]
+    [SerializeField]
     private float maxStamina;
     public float MaxStamina => maxStamina;
 
@@ -61,14 +58,13 @@ public class PlayerData : ScriptableObject
     public bool IsDisappear { get; private set; }
 
 
-    [Title("エコーのパラメーター")]
-    [LabelText("エコーの最大射程"), SerializeField]
+    [SerializeField]
     private float echoDistance;
     public float EchoDistance => echoDistance;
-    [LabelText("エコーの速度"), SerializeField]
+    [SerializeField]
     private float echoSpped;
     public float EchoSpeed => echoSpped;
-    [LabelText("エコーのクールタイム"), SerializeField]
+    [SerializeField]
     private float echoCoolTime;
     public float EchoCoolTime => echoCoolTime;
 
@@ -98,16 +94,14 @@ public class PlayerData : ScriptableObject
 
     public bool IsPlayEcho { get; private set; }
 
-    [Title("マウスの感度")]
-    [LabelText("縦の感度"), SerializeField]
+    [SerializeField]
     private float verticalSpeed;
     public float VerticalSpeed => verticalSpeed;
-    [LabelText("横の感度"), SerializeField]
+    [SerializeField]
     private float horizontalSpeed;
     public float HorizontalSpeed => horizontalSpeed;
 
-    [Title("その他")]
-    [LabelText("インタラクトできる距離"), SerializeField]
+    [SerializeField]
     private float interactDistance;
     public float InteractDistance => interactDistance;
 }

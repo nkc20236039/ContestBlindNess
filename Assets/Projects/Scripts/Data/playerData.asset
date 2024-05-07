@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e940673ffb6704b932797a5c12dbff, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
-  fowardSpeed: 0
-  buckSpeed: 0
-  sideSpeed: 0
-  dashSpeed: 0
+  fowardSpeed: 8
+  buckSpeed: 8
+  sideSpeed: 8
+  dashSpeed: 2
   expendStamina: 0
-  recoverStamina: 0
-  coolDownStamina: 0
-  maxStamina: 0
-  echoDistance: 0
-  echoSpped: 0
-  echoCoolTime: 0
-  interactDistance: 0
+  recoverStamina: 3
+  coolDownStamina: 3
+  maxStamina: 3
+  echoDistance: 3
+  echoSpped: 3
+  echoCoolTime: 3
+  verticalSpeed: 0.5
+  horizontalSpeed: 0.5
+  interactDistance: 3

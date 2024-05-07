@@ -17,12 +17,12 @@ public class PlayerDashProcess
 
         try
         {
-            context.inputActions.Player.OnDash.started -= OnDash;
+            context.inputActions.Player.OnDash.performed -= OnDash;
             context.inputActions.Player.OnDash.canceled -= OnDash;
         }
         catch { }
 
-        context.inputActions.Player.OnDash.started += OnDash;
+        context.inputActions.Player.OnDash.performed += OnDash;
         context.inputActions.Player.OnDash.canceled += OnDash;
 
     }
@@ -31,13 +31,11 @@ public class PlayerDashProcess
     {
         if (playerData.IsDisappear)
         {
-            float coolDownTime = playerData.CooldownStamina * Time.deltaTime;
-            playerData.NowStamina = coolDownTime;
+            playerData.NowStamina += playerData.CooldownStamina * Time.deltaTime;
         }
         else
         {
-            float recoverTime = playerData.RecoverStamina * Time.deltaTime;
-            playerData.NowStamina = recoverTime;
+            playerData.NowStamina += playerData.RecoverStamina * Time.deltaTime;
         }
     }
 }
