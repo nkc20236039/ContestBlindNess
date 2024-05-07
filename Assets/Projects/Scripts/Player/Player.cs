@@ -2,6 +2,7 @@ using Alchemy.Inspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum PlayerStateType
 {
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
     private PlayerInputAction inputAction;
     private Rigidbody playerRigidbody;
     private PlayerMouseMove mouseMove;
+    private bool isEcho;
 
     private void Start()
     {
@@ -52,5 +54,14 @@ public class Player : MonoBehaviour
     {
         stateMachine.Disable();
         stateMachine = null;
+    }
+
+    public void OnEcho(InputAction.CallbackContext context)
+    {
+        if(playerData.EchoCoolTime == 0)
+        {
+            isEcho = true;
+            //アウトライン表示
+        }
     }
 }

@@ -53,6 +53,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""OnEcho"",
+                    ""type"": ""Value"",
+                    ""id"": ""bef0f307-58f4-47d4-afcb-7e4f2c9c92fc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""OnMouseMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""953f2be3-9d7a-4962-a1ac-f895eda24424"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OnEcho"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_OnMove = m_Player.FindAction("OnMove", throwIfNotFound: true);
         m_Player_OnDash = m_Player.FindAction("OnDash", throwIfNotFound: true);
         m_Player_OnMouseMove = m_Player.FindAction("OnMouseMove", throwIfNotFound: true);
+        m_Player_OnEcho = m_Player.FindAction("OnEcho", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,6 +228,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_OnMove;
     private readonly InputAction m_Player_OnDash;
     private readonly InputAction m_Player_OnMouseMove;
+    private readonly InputAction m_Player_OnEcho;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -214,6 +236,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @OnMove => m_Wrapper.m_Player_OnMove;
         public InputAction @OnDash => m_Wrapper.m_Player_OnDash;
         public InputAction @OnMouseMove => m_Wrapper.m_Player_OnMouseMove;
+        public InputAction @OnEcho => m_Wrapper.m_Player_OnEcho;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -232,6 +255,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @OnMouseMove.started += instance.OnOnMouseMove;
             @OnMouseMove.performed += instance.OnOnMouseMove;
             @OnMouseMove.canceled += instance.OnOnMouseMove;
+            @OnEcho.started += instance.OnOnEcho;
+            @OnEcho.performed += instance.OnOnEcho;
+            @OnEcho.canceled += instance.OnOnEcho;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -245,6 +271,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @OnMouseMove.started -= instance.OnOnMouseMove;
             @OnMouseMove.performed -= instance.OnOnMouseMove;
             @OnMouseMove.canceled -= instance.OnOnMouseMove;
+            @OnEcho.started -= instance.OnOnEcho;
+            @OnEcho.performed -= instance.OnOnEcho;
+            @OnEcho.canceled -= instance.OnOnEcho;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -267,5 +296,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnOnMove(InputAction.CallbackContext context);
         void OnOnDash(InputAction.CallbackContext context);
         void OnOnMouseMove(InputAction.CallbackContext context);
+        void OnOnEcho(InputAction.CallbackContext context);
     }
 }
