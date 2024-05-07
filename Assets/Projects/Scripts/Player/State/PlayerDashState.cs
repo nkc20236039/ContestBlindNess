@@ -24,7 +24,12 @@ public class PlayerDashState : PlayerStateBase
 
     public override void OnUpdate()
     {
-        playerData.NowStamina -= playerData.ExpendStamina * Time.deltaTime;
+        playerData.CurrentStamina -= playerData.ExpendStamina * Time.deltaTime;
+
+        if (playerData.CurrentStamina == 0)
+        {
+            playerData.IsDisappear = true;
+        }
 
         if (Mathf.Approximately(inputDirection.magnitude, 0))
         {

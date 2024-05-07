@@ -31,31 +31,18 @@ public class PlayerData : ScriptableObject
     public float MaxStamina => maxStamina;
 
 
-    private float nowStaina;
-    public float NowStamina
+    private float currentStaina;
+    public float CurrentStamina
     {
-        get => nowStaina;
+        get => currentStaina;
 
         set
         {
-            if (value < 0f)
-            {
-                nowStaina = 0;
-                IsDisappear = true;
-            }
-            else if (MaxStamina < value)
-            {
-                nowStaina = MaxStamina;
-                IsDisappear = false;
-            }
-            else
-            {
-                nowStaina = value;
-            }
+            currentStaina = Mathf.Clamp(value, 0, MaxStamina);
         }
     }
 
-    public bool IsDisappear { get; private set; }
+    public bool IsDisappear { get; set; }
 
 
     [SerializeField]
@@ -68,31 +55,18 @@ public class PlayerData : ScriptableObject
     private float echoCoolTime;
     public float EchoCoolTime => echoCoolTime;
 
-    private float nowEchoCoolTime;
-    public float NowEchoCoolTime
+    private float currentEchoCoolTime;
+    public float CurrentEchoCoolTime
     {
-        get => nowEchoCoolTime;
+        get => currentEchoCoolTime;
 
         set
         {
-            if (value <= 0f)
-            {
-                nowEchoCoolTime = 0f;
-                IsPlayEcho = false;
-            }
-            else if(EchoCoolTime < value)
-            {
-                nowEchoCoolTime = echoCoolTime;
-                IsPlayEcho = true;
-            }
-            else
-            {
-                nowEchoCoolTime = value;
-            }
+            currentEchoCoolTime = Mathf.Clamp(value, 0, MaxStamina);
         }
     }
 
-    public bool IsPlayEcho { get; private set; }
+    public bool IsPlayEcho { get; set; }
 
     [SerializeField]
     private float verticalSpeed;

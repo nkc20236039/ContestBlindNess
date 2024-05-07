@@ -11,10 +11,11 @@ public class PlayerMovement
     private PlayerMovementSetting setting;
 
     public PlayerMovement(PlayerContext context,
-        Action<InputAction.CallbackContext> OnMve)
+        Action<InputAction.CallbackContext> OnMve,
+        PlayerMovementSetting setting)
     {
         this.context = context;
-        setting = context.setting;
+        this.setting = setting;
         playerData = context.playerData;
 
         try

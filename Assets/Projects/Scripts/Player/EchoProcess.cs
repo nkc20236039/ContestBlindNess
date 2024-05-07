@@ -23,7 +23,7 @@ public class EchoProcess
 
         //ÉGÉRÅ[ÇÃèàóù
 
-        playerData.NowEchoCoolTime = 0;
+        playerData.CurrentEchoCoolTime = 0;
     }
 
     public void EchoCoolTime()
@@ -31,7 +31,7 @@ public class EchoProcess
         if (playerData.IsPlayEcho)
             return;
 
-        playerData.NowEchoCoolTime += playerData.EchoCoolTime * Time.deltaTime;
+        playerData.CurrentEchoCoolTime += playerData.EchoCoolTime * Time.deltaTime;
     }
 
     public void OnEcho(InputAction.CallbackContext context)

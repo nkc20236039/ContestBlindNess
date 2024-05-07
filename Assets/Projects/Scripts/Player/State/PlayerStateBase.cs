@@ -23,9 +23,8 @@ public abstract class PlayerStateBase : IState
         this.context = context;
         this.playerData = context.playerData;
         this.playerRigidbody = context.playerRigidbody;
-        this.setting = context.setting;
-
-        movement = new PlayerMovement(context, OnMove);
+        setting = new PlayerMovementSetting();
+        movement = new PlayerMovement(context, OnMove,setting);
         dashProcess = new PlayerDashProcess(context, OnDash);
     }
 

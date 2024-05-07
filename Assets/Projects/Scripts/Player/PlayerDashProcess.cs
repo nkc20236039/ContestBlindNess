@@ -29,13 +29,18 @@ public class PlayerDashProcess
 
     public void DashProcess()
     {
+        if(playerData.CurrentStamina == playerData.MaxStamina)
+        {
+            playerData.IsDisappear = false;
+        }
+
         if (playerData.IsDisappear)
         {
-            playerData.NowStamina += playerData.CooldownStamina * Time.deltaTime;
+            playerData.CurrentStamina += playerData.CooldownStamina * Time.deltaTime;
         }
         else
         {
-            playerData.NowStamina += playerData.RecoverStamina * Time.deltaTime;
+            playerData.CurrentStamina += playerData.RecoverStamina * Time.deltaTime;
         }
     }
 }

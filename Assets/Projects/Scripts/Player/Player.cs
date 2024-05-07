@@ -22,20 +22,18 @@ public class Player : MonoBehaviour
     private Rigidbody playerRigidbody;
     private PlayerMouseMove mouseMove;
     private EchoProcess echoProcess;
-    private PlayerMovementSetting setting;
 
     private void Awake()
     {
         inputAction = new PlayerInputAction();
         inputAction.Enable();
         playerRigidbody = GetComponent<Rigidbody>();
-        setting = new PlayerMovementSetting();
     }
 
     private void Start()
     {
         context = new PlayerContext(playerData,inputAction,playerRigidbody,
-            playerHead.transform,setting);
+            playerHead.transform);
         stateMachine = new StateMachine(this);
         stateMachine.Register(PlayerStateType.Idel, new PlayerIdelState(context));
         stateMachine.Register(PlayerStateType.Move, new PlayerMoveState(context));
@@ -43,7 +41,9 @@ public class Player : MonoBehaviour
         stateMachine.Enable(PlayerStateType.Idel);
         mouseMove = new PlayerMouseMove(context);
         echoProcess = new EchoProcess(context);
-        playerData.NowStamina = playerData.MaxStamina + 1;
+        playerData.CurrentStamina = playerData.MaxStamina;
+        Debug.Log(playerData.CurrentStamina);
+        playerData.IsDisappear = false;
     }
 
     private void Update()

@@ -23,7 +23,7 @@ public class PlayerIdelState : PlayerStateBase
 
     public override void OnUpdate()
     {
-        if (playerData.NowStamina < playerData.MaxStamina)
+        if (playerData.CurrentStamina < playerData.MaxStamina)
         {
             dashProcess.DashProcess();
         }
