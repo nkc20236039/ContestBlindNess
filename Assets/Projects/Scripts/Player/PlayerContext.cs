@@ -9,8 +9,7 @@ public class PlayerContext
     public Rigidbody playerRigidbody { get; }
     public Transform playerHeadTransform { get; }
 
-    public PlayerContext(PlayerData playerData,PlayerInputAction inputActions,
-        Rigidbody playerRigidbody,Transform playerHeadTransform)
+    public PlayerContext(PlayerData playerData,PlayerInputAction inputActions,Rigidbody playerRigidbody,Transform playerHeadTransform)
     {
         this.playerData = playerData;
         this.inputActions = inputActions;

@@ -10,9 +10,7 @@ public class PlayerMovement
     private PlayerData playerData;
     private PlayerMovementSetting setting;
 
-    public PlayerMovement(PlayerContext context,
-        Action<InputAction.CallbackContext> OnMve,
-        PlayerMovementSetting setting)
+    public PlayerMovement(PlayerContext context,Action<InputAction.CallbackContext> OnMve,PlayerMovementSetting setting)
     {
         this.context = context;
         this.setting = setting;
@@ -49,7 +47,7 @@ public class PlayerMovement
             * setting.InputDirection.x
             * playerData.SideSpeed;
 
-        return velocity;
+        return velocity * Time.deltaTime;
     }
 }
 
