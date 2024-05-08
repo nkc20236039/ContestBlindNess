@@ -24,9 +24,9 @@ public class PlayerDashState : PlayerStateBase
     {
         playerData.CurrentStamina -= playerData.ExpendStamina * Time.deltaTime;
 
-        if (playerData.CurrentStamina == 0)
+        if(playerData.CurrentStamina == 0)
         {
-            playerData.IsDisappear = true;
+            playerData.CurrentCoolDown = playerData.CooldownStamina;
         }
 
         if (Mathf.Approximately(inputDirection.magnitude, 0))
@@ -35,9 +35,10 @@ public class PlayerDashState : PlayerStateBase
             return;
         }
 
-        if (!isDash || playerData.IsDisappear)
+        if (!isDash || !playerData.IsDisappear)
         {
             StateChenge(PlayerStateType.Move);
+            return;
         }
     }
 }

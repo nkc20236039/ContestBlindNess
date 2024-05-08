@@ -41,9 +41,6 @@ public class Player : MonoBehaviour
         stateMachine.Enable(PlayerStateType.Idel);
         mouseMove = new PlayerMouseMove(context);
         echoProcess = new EchoProcess(context);
-        playerData.CurrentStamina = playerData.MaxStamina;
-        Debug.Log(playerData.CurrentStamina);
-        playerData.IsDisappear = false;
     }
 
     private void Update()

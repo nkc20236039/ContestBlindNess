@@ -24,13 +24,13 @@ public class PlayerMoveState : PlayerStateBase
 
     public override void OnUpdate()
     {
-        if (playerData.CurrentStamina <= playerData.MaxStamina)
+        if (playerData.CurrentStamina < playerData.MaxStamina)
         {
             dashProcess.DashProcess();
         }
 
         //スタミナが切れてなければ
-        if (isDash && !playerData.IsDisappear)
+        if (isDash && playerData.IsDisappear)
         {
             StateChenge(PlayerStateType.Dash);
             return;

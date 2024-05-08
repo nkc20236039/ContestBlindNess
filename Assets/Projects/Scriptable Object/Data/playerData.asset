@@ -18,7 +18,7 @@ MonoBehaviour:
   dashSpeed: 5
   expendStamina: 1
   recoverStamina: 3
-  coolDownStamina: 1
+  coolDownStamina: 5
   maxStamina: 3
   echoDistance: 3
   echoSpped: 3

@@ -30,6 +30,16 @@ public class PlayerData : ScriptableObject
     private float maxStamina;
     public float MaxStamina => maxStamina;
 
+    private float currentCoolDown;
+    public float CurrentCoolDown
+    {
+        get => currentCoolDown;
+
+        set
+        {
+            currentCoolDown = Mathf.Clamp(value, 0, CooldownStamina);
+        }
+    }
 
     private float currentStaina;
     public float CurrentStamina
@@ -42,7 +52,7 @@ public class PlayerData : ScriptableObject
         }
     }
 
-    public bool IsDisappear { get; set; }
+    public bool IsDisappear { get => (0 == CurrentCoolDown); }
 
 
     [SerializeField]
@@ -66,7 +76,7 @@ public class PlayerData : ScriptableObject
         }
     }
 
-    public bool IsPlayEcho { get; set; }
+    public bool IsPlayEcho => (0 > currentEchoCoolTime);
 
     [SerializeField]
     private float verticalSpeed;
