@@ -19,7 +19,9 @@ public class EchoProcess
     public void PlayEcho()
     {
         if (!playerData.IsPlayEcho)
+        {
             return;
+        }
 
         //ÉGÉRÅ[ÇÃèàóù
 
@@ -29,7 +31,9 @@ public class EchoProcess
     public void EchoCoolTime()
     {
         if (playerData.IsPlayEcho)
+        {
             return;
+        }
 
         playerData.CurrentEchoCoolTime += playerData.EchoCoolTime * Time.deltaTime;
     }
