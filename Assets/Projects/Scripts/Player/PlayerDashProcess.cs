@@ -30,11 +30,17 @@ public class PlayerDashProcess
     {
         if (playerData.IsDisappear)
         {
-            playerData.CurrentStamina += playerData.RecoverStamina * Time.deltaTime;
+            playerData.CurrentStamina 
+                += playerData.MaxStamina
+                /playerData.RecoverStamina 
+                * Time.deltaTime;
         }
         else
         {
-            playerData.CurrentCoolDown -= playerData.CooldownStamina * Time.deltaTime;
+            playerData.CurrentCoolDown 
+                -= playerData.CooldownStamina
+                /playerData.CooldownStamina 
+                * Time.deltaTime;
         }
 
         if (playerData.CurrentCoolDown == 0)

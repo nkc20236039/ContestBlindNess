@@ -36,7 +36,7 @@ public class PlayerMovement
             new Vector3(1, 0, 1)
             ).normalized;
 
-        float zSpeed = (0 > setting.InputDirection.z) ?
+        float zSpeed = (0 < setting.InputDirection.z) ?
             playerData.FowardSpeed : playerData.BuckSpeed;
 
         velocity = cameraFoward 

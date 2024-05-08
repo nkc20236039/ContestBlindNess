@@ -22,7 +22,7 @@ public class PlayerDashState : PlayerStateBase
 
     public override void OnUpdate()
     {
-        playerData.CurrentStamina -= playerData.ExpendStamina * Time.deltaTime;
+        playerData.CurrentStamina -= playerData.MaxStamina/playerData.ExpendStamina * Time.deltaTime;
 
         if(playerData.CurrentStamina == 0)
         {
