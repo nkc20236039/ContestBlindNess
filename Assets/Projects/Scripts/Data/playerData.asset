@@ -15,7 +15,7 @@ MonoBehaviour:
   fowardSpeed: 8
   buckSpeed: 8
   sideSpeed: 8
-  dashSpeed: 2
+  dashSpeed: 5
   expendStamina: 1
   recoverStamina: 3
   coolDownStamina: 1
