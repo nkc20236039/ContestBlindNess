@@ -9,8 +9,7 @@ public class PlayerDashProcess
     private PlayerContext context;
     private PlayerData playerData;
 
-    public PlayerDashProcess(PlayerContext context,
-        Action<InputAction.CallbackContext> OnDash)
+    public PlayerDashProcess(PlayerContext context,Action<InputAction.CallbackContext> OnDash)
     {
         this.context = context;
         playerData = context.playerData;

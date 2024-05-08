@@ -32,8 +32,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        context = new PlayerContext(playerData,inputAction,playerRigidbody,
-            playerHead.transform);
+        context = new PlayerContext(playerData,inputAction,playerRigidbody,playerHead.transform);
         stateMachine = new StateMachine(this);
         stateMachine.Register(PlayerStateType.Idel, new PlayerIdelState(context));
         stateMachine.Register(PlayerStateType.Move, new PlayerMoveState(context));
