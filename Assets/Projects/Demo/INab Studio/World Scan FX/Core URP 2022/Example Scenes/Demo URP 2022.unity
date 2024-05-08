@@ -7407,7 +7407,6 @@ MonoBehaviour:
   _FovMaskEnabled: 1
   _FovMask: 0.341
   _FovMaskSmoothness: 1
-  _OverlayType: 4
   _OverlayMultiplier: 0.95
   _OverlayPower: 1
   _OverlayColor: {r: 0, g: 9.330131, b: 178.20636, a: 0}

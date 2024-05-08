@@ -327,8 +327,7 @@ namespace INab.WorldScanFX
         public void Start()
         {
             SetCurrentScanValue(0);
-            if(updateScanMaterialProperties || useScanOverlayOnMaterials || useWorldScanMaterials) UpdateAllMaterialsKeywords();
-
+            
             foreach (var item in highlightObjects)
             {
                 item.AlreadyScanned = false;
@@ -514,30 +513,6 @@ namespace INab.WorldScanFX
         #endregion
 
         #region MaterialsMethods
-
-        /// <summary>
-        /// Updates keywords on materials based on current overlay and FOV mask settings.
-        /// </summary>
-        public void UpdateAllMaterialsKeywords()
-        {
-            UpdateMaterialKeyowrds(scanMaterial);
-
-            if (useScanOverlayOnMaterials)
-            {
-                foreach (var material in highlightMaterials)
-                {
-                    UpdateMaterialKeyowrds(material);
-                }
-            }
-
-            if (useWorldScanMaterials)
-            {
-                foreach (var material in worldScanMaterials)
-                {
-                    UpdateMaterialKeyowrds(material);
-                }
-            }
-        }
 
         private void SetCommonScanProperties(Material material)
         {

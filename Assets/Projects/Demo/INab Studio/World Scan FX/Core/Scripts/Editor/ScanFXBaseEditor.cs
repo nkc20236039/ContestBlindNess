@@ -29,7 +29,7 @@ namespace INab.WorldScanFX
         public SerializedProperty _SizeAdjust;
         public SerializedProperty _Size;
         public SerializedProperty _OriginOffset;
-        
+
         public SerializedProperty _MaskRadius;
         public SerializedProperty _MaskHardness;
         public SerializedProperty _MaskPower;
@@ -48,9 +48,7 @@ namespace INab.WorldScanFX
         public SerializedProperty _EdgeColor;
         public SerializedProperty _HighlightColor;
 
-        public SerializedProperty _OverlayType;
         public SerializedProperty _OverlayMultiplier;
-        public SerializedProperty _OverlayPower;
         public SerializedProperty _OverlayColor;
         public SerializedProperty _ScreenTexture;
         public SerializedProperty _ScreenTextureTiling;
@@ -121,9 +119,7 @@ namespace INab.WorldScanFX
             _HighlightColor = serializedObject.FindProperty("_HighlightColor");
             _EdgeColor = serializedObject.FindProperty("_EdgeColor");
 
-            _OverlayType = serializedObject.FindProperty("_OverlayType");
             _OverlayMultiplier = serializedObject.FindProperty("_OverlayMultiplier");
-            _OverlayPower = serializedObject.FindProperty("_OverlayPower");
             _OverlayColor = serializedObject.FindProperty("_OverlayColor");
             _ScreenTexture = serializedObject.FindProperty("_ScreenTexture");
             _ScreenTextureTiling = serializedObject.FindProperty("_ScreenTextureTiling");
@@ -286,58 +282,29 @@ namespace INab.WorldScanFX
                 EditorGUILayout.Space();
 
                 EditorGUILayout.LabelField("Overlay", EditorStyles.boldLabel);
-                EditorGUILayout.PropertyField(_OverlayType);
 
-                if (_OverlayType.enumValueIndex != 0)
-                {
-                    EditorGUILayout.PropertyField(_OverlayMultiplier);
-                    EditorGUILayout.PropertyField(_OverlayPower);
-                    EditorGUILayout.PropertyField(_OverlayColor);
-                    EditorGUILayout.Space();
-                }
+                EditorGUILayout.PropertyField(_OverlayMultiplier);
+                EditorGUILayout.PropertyField(_OverlayColor);
+                EditorGUILayout.Space();
 
-                switch (_OverlayType.enumValueIndex)
-                {
-                    case 1:
-                        EditorGUILayout.PropertyField(_ScreenTexture);
-                        EditorGUILayout.PropertyField(_ScreenTextureTiling);
-                        break;
-                    case 2:
-                        EditorGUILayout.PropertyField(_Thickness);
+                EditorGUILayout.LabelField("Grid", EditorStyles.boldLabel);
+                EditorGUILayout.PropertyField(_GridMultiplier);
+                EditorGUILayout.PropertyField(_Frequency);
+                EditorGUILayout.PropertyField(_Ratio);
+                EditorGUILayout.Space();
 
-                        EditorGUILayout.PropertyField(_NormalsOffset);
-                        EditorGUILayout.PropertyField(_NormalsHardness);
-                        EditorGUILayout.PropertyField(_NormalsPower);
+                EditorGUILayout.LabelField("Edge Detection", EditorStyles.boldLabel);
+                EditorGUILayout.PropertyField(_EdgeDetectionMultiplier);
+                EditorGUILayout.PropertyField(_Thickness);
 
-                        EditorGUILayout.PropertyField(_DepthThreshold);
-                        EditorGUILayout.PropertyField(_DepthHardness);
-                        EditorGUILayout.PropertyField(_DepthPower);
-                        break;
-                    case 3:
-                        EditorGUILayout.PropertyField(_Frequency);
-                        EditorGUILayout.PropertyField(_Ratio);
-                        break;
-                    case 4:
+                EditorGUILayout.PropertyField(_NormalsOffset);
+                EditorGUILayout.PropertyField(_NormalsHardness);
+                EditorGUILayout.PropertyField(_NormalsPower);
 
-                        EditorGUILayout.LabelField("Grid", EditorStyles.boldLabel);
-                        EditorGUILayout.PropertyField(_GridMultiplier);
-                        EditorGUILayout.PropertyField(_Frequency);
-                        EditorGUILayout.PropertyField(_Ratio);
-                        EditorGUILayout.Space();
+                EditorGUILayout.PropertyField(_DepthThreshold);
+                EditorGUILayout.PropertyField(_DepthHardness);
+                EditorGUILayout.PropertyField(_DepthPower);
 
-                        EditorGUILayout.LabelField("Edge Detection", EditorStyles.boldLabel);
-                        EditorGUILayout.PropertyField(_EdgeDetectionMultiplier);
-                        EditorGUILayout.PropertyField(_Thickness);
-
-                        EditorGUILayout.PropertyField(_NormalsOffset);
-                        EditorGUILayout.PropertyField(_NormalsHardness);
-                        EditorGUILayout.PropertyField(_NormalsPower);
-
-                        EditorGUILayout.PropertyField(_DepthThreshold);
-                        EditorGUILayout.PropertyField(_DepthHardness);
-                        EditorGUILayout.PropertyField(_DepthPower);
-                        break;
-                }
 
                 EditorGUILayout.Space();
             }
@@ -349,18 +316,12 @@ namespace INab.WorldScanFX
             {
                 waitForFavMaskEnabled = true;
             }
-
-            if ((int)(scanFX._OverlayType) != _OverlayType.enumValueIndex)
-            {
-                waitForOverlayType = true;
-            }
         }
 
         protected virtual void UpdateKeywords(ScanFXBase scanFX)
         {
             if (waitForFavMaskEnabled || waitForOverlayType)
             {
-                scanFX.UpdateAllMaterialsKeywords();
                 waitForFavMaskEnabled = false;
                 waitForOverlayType = false;
             }
