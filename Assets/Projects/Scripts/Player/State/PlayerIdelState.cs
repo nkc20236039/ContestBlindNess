@@ -2,35 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdelState : PlayerStateBase
+namespace Player.State
 {
-    public PlayerIdelState(PlayerContext context) : base(context){}
-
-    public override void OnEnter()
+    public class PlayerIdelState : PlayerStateBase
     {
-        playerRigidbody.velocity = Vector3.zero;
-    }
+        public PlayerIdelState(PlayerContext context) : base(context) { }
 
-    public override void OnExit()
-    {
-
-    }
-
-    public override void OnFixedUpdate()
-    {
-
-    }
-
-    public override void OnUpdate()
-    {
-        if (playerData.CurrentStamina < playerData.MaxStamina)
+        public override void OnEnter()
         {
-            dashProcess.DashProcess();
+            playerRigidbody.velocity = Vector3.zero;
         }
 
-        if (!Mathf.Approximately(inputDirection.magnitude, 0))
+        public override void OnExit()
         {
-            StateChenge(PlayerStateType.Move);
+
+        }
+
+        public override void OnFixedUpdate()
+        {
+
+        }
+
+        public override void OnUpdate()
+        {
+            if (playerData.CurrentStamina < playerData.MaxStamina)
+            {
+                dashProcess.DashProcess();
+            }
+
+            if (!Mathf.Approximately(inputDirection.magnitude, 0))
+            {
+                StateChenge(PlayerStateType.Move);
+            }
         }
     }
 }
