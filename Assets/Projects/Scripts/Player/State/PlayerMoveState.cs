@@ -2,44 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveState : PlayerStateBase
+namespace Player.State
 {
-    public PlayerMoveState(PlayerContext context) : base(context){}
-
-    public override void OnEnter()
+    public class PlayerMoveState : PlayerStateBase
     {
-        
-    }
+        public PlayerMoveState(PlayerContext context) : base(context) { }
 
-    public override void OnExit()
-    {
-
-    }
-
-    public override void OnFixedUpdate()
-    {
-        setting.MovementSetting(inputDirection, playerRigidbody.velocity);
-        playerRigidbody.velocity = movement.Mvement();
-    }
-
-    public override void OnUpdate()
-    {
-        if (playerData.CurrentStamina < playerData.MaxStamina)
+        public override void OnEnter()
         {
-            dashProcess.DashProcess();
+
         }
 
-        //スタミナが切れてなければ
-        if (isDash && playerData.IsDisappear)
+        public override void OnExit()
         {
-            StateChenge(PlayerStateType.Dash);
-            return;
+
         }
 
-        if (Mathf.Approximately(inputDirection.magnitude, 0))
+        public override void OnFixedUpdate()
         {
-            StateChenge(PlayerStateType.Idel);
-            return;
+            playerRigidbody.velocity
+                = motionCreator.
+                Create(inputDirection).
+                ObjectView(context.playerHead).
+                PlaneMotion().
+                AdvancedForSpeed(
+                    playerData.DefoltSpeed.Front,
+                    playerData.DefoltSpeed.Back,
+                    playerData.DefoltSpeed.Side).
+                DeltaTimeForce;
+        }
+
+        public override void OnUpdate()
+        {
+            if (playerData.CurrentStamina < playerData.MaxStamina)
+            {
+                dashProcess.DashProcess();
+            }
+
+            //スタミナが切れてなければ
+            if (isDash && playerData.IsDisappear)
+            {
+                StateChenge(PlayerStateType.Dash);
+                return;
+            }
+
+            if (Mathf.Approximately(inputDirection.magnitude, 0))
+            {
+                StateChenge(PlayerStateType.Idel);
+                return;
+            }
         }
     }
 }

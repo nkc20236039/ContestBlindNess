@@ -9,7 +9,7 @@
 - [通常時AI](/Specifications/Enemy/DefaultAI.md)
 - [追跡時AI](/Specifications/Enemy/trackingAI.md)
 
-# UIについて
+# UI
 <details>
 
 ## 概要
@@ -19,19 +19,18 @@
 ## 目次
 
 ### メニューUI
-- [メニュー画面](/UI/MenuUI/MenuDisplay.md)
-  - [ゲームに戻る](/UI/MenuUI/ReturnGame.md)
-  - [リスタート](/UI/MenuUI/ReStart.md)
-  - [オプション](/UI/MenuUI/ConfirmDisplay.md)
-  - [タイトルに戻る](/UI/MenuUI/ReturnTitle.md)
+- [メニュー画面](/Specifications/UI/MenuUI/MenuDisplay.md)
+  - [ゲームに戻る](/Specifications/UI/MenuUI/ReturnGame.md)
+  - [リスタート](/Specifications/UI/MenuUI/ReStart.md)
+  - [オプション]
+  - [タイトルに戻る](/Specifications/UI/MenuUI/ReturnTitle.md)
 
 ### プレイヤーUI
-- [ダッシュゲージ]
-- [インタラクトガイド]
-- [照準]
- 
+- [ダッシュゲージ](/Specifications/UI/PlayerUI/DashGage.md)
+- [インタラクトガイド](/Specifications/UI/PlayerUI/ActionGuide.md)
+- [照準](/Specifications/UI/PlayerUI/CrossHair.md)
+
 </details>
 
 ## その他
 - [エコー](/Specifications/Echo.md)
-- [ダッシュゲージ](/Specifications/DashGage.md)

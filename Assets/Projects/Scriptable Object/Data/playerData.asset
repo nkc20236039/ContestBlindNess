@@ -19,10 +19,13 @@ MonoBehaviour:
   expendStamina: 5
   recoverStamina: 3
   coolDownStamina: 5
-  maxStamina: 3
+  maxStamina: 5
   echoDistance: 3
   echoSpped: 3
   echoCoolTime: 3
   verticalSpeed: 0.5
   horizontalSpeed: 0.5
-  interactDistance: 3
+  interactDistance: 5
+  InteractLayer:
+    serializedVersion: 2
+    m_Bits: 64

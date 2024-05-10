@@ -3,46 +3,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Parameter;
 
-public class EchoProcess
+namespace Player
 {
-    private PlayerData playerData;
-    
-    public EchoProcess(PlayerContext context)
+    public class EchoProcess
     {
-        this.playerData = context.playerData;
+        private PlayerData playerData;
 
-        context.inputActions.Player.OnEcho.started += OnEcho;
-        context.inputActions.Player.OnEcho.canceled += OnEcho;
-    }
-
-    public void PlayEcho()
-    {
-        if (!playerData.IsPlayEcho)
+        public EchoProcess(PlayerContext context)
         {
-            return;
+            this.playerData = context.playerData;
+
+            context.inputActions.Player.OnEcho.started += OnEcho;
+            context.inputActions.Player.OnEcho.canceled += OnEcho;
         }
 
-        //エコーの処理
-
-        playerData.CurrentEchoCoolTime = 0;
-    }
-
-    public void EchoCoolTime()
-    {
-        if (playerData.IsPlayEcho)
+        public void PlayEcho()
         {
-            return;
+            if (!playerData.IsPlayEcho)
+            {
+                return;
+            }
+
+            //エコーの処理
+
+            playerData.CurrentEchoCoolTime = 0;
         }
 
-        playerData.CurrentEchoCoolTime += playerData.EchoCoolTime * Time.deltaTime;
-    }
-
-    public void OnEcho(InputAction.CallbackContext context)
-    {
-        if (context.started)
+        public void EchoCoolTime()
         {
-            PlayEcho();
+            if (playerData.IsPlayEcho)
+            {
+                return;
+            }
+
+            playerData.CurrentEchoCoolTime += playerData.EchoCoolTime * Time.deltaTime;
+        }
+
+        public void OnEcho(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                PlayEcho();
+            }
         }
     }
 }
