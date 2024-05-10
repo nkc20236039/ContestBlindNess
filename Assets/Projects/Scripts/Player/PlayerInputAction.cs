@@ -62,6 +62,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""OnInteract"",
+                    ""type"": ""Value"",
+                    ""id"": ""21cadd69-836e-4efc-b3f4-45bc565d5c44"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""OnEcho"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99adf6c4-9ecc-4f6f-af07-0260785e46ac"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OnInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_OnDash = m_Player.FindAction("OnDash", throwIfNotFound: true);
         m_Player_OnMouseMove = m_Player.FindAction("OnMouseMove", throwIfNotFound: true);
         m_Player_OnEcho = m_Player.FindAction("OnEcho", throwIfNotFound: true);
+        m_Player_OnInteract = m_Player.FindAction("OnInteract", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,6 +250,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_OnDash;
     private readonly InputAction m_Player_OnMouseMove;
     private readonly InputAction m_Player_OnEcho;
+    private readonly InputAction m_Player_OnInteract;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -237,6 +259,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @OnDash => m_Wrapper.m_Player_OnDash;
         public InputAction @OnMouseMove => m_Wrapper.m_Player_OnMouseMove;
         public InputAction @OnEcho => m_Wrapper.m_Player_OnEcho;
+        public InputAction @OnInteract => m_Wrapper.m_Player_OnInteract;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +281,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @OnEcho.started += instance.OnOnEcho;
             @OnEcho.performed += instance.OnOnEcho;
             @OnEcho.canceled += instance.OnOnEcho;
+            @OnInteract.started += instance.OnOnInteract;
+            @OnInteract.performed += instance.OnOnInteract;
+            @OnInteract.canceled += instance.OnOnInteract;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -274,6 +300,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @OnEcho.started -= instance.OnOnEcho;
             @OnEcho.performed -= instance.OnOnEcho;
             @OnEcho.canceled -= instance.OnOnEcho;
+            @OnInteract.started -= instance.OnOnInteract;
+            @OnInteract.performed -= instance.OnOnInteract;
+            @OnInteract.canceled -= instance.OnOnInteract;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -297,5 +326,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnOnDash(InputAction.CallbackContext context);
         void OnOnMouseMove(InputAction.CallbackContext context);
         void OnOnEcho(InputAction.CallbackContext context);
+        void OnOnInteract(InputAction.CallbackContext context);
     }
 }

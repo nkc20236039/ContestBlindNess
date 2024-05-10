@@ -27,6 +27,7 @@ namespace Player
         private Rigidbody playerRigidbody;
         private PlayerMouseMove mouseMove;
         private EchoProcess echoProcess;
+        private GimmickProcess gimmickProcess;
         private MotionCreator motionCreator;
 
         private void Awake()
@@ -47,6 +48,7 @@ namespace Player
             stateMachine.Enable(PlayerStateType.Idel);
             mouseMove = new PlayerMouseMove(context);
             echoProcess = new EchoProcess(context);
+            gimmickProcess = new GimmickProcess(context);
         }
 
         private void Update()

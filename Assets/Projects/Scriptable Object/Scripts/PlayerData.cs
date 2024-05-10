@@ -14,7 +14,6 @@ namespace Parameter
             Front = front;
             Back = back;
             Side = side;
-
         }
     }
 
@@ -130,5 +129,7 @@ namespace Parameter
         [Header("インタラクトの距離")]
         private float interactDistance;
         public float InteractDistance => interactDistance;
+
+        public LayerMask InteractLayer;
     }
 }
