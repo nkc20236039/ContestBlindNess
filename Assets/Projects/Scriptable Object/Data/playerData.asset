@@ -12,13 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e940673ffb6704b932797a5c12dbff, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
-  defaultFoward: 250
-  defaultBuck: 5
-  defaultSide: 10
-  dashFoward: 1000
-  dashBuck: 10
-  dashSide: 20
-  expendStamina: 1
+  fowardSpeed: 600
+  buckSpeed: 300
+  sideSpeed: 400
+  dashSpeed: 3
+  expendStamina: 5
   recoverStamina: 3
   coolDownStamina: 5
   maxStamina: 5
