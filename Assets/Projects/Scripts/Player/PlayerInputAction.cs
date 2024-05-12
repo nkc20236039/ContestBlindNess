@@ -57,8 +57,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""OnEcho"",
                     ""type"": ""Value"",
-                    ""id"": ""bef0f307-58f4-47d4-afcb-7e4f2c9c92fc"",
+                    ""id"": ""901b3523-0285-48aa-94b6-17231f01064a"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""OnInteract"",
+                    ""type"": ""Value"",
+                    ""id"": ""21cadd69-836e-4efc-b3f4-45bc565d5c44"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -123,7 +132,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0989768c-c320-4731-b9d5-9d94064a8991"",
-                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -134,7 +143,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1c1bedde-3437-4897-837a-6c89785d44c6"",
-                    ""path"": ""<Mouse>/radius"",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -144,12 +153,23 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""953f2be3-9d7a-4962-a1ac-f895eda24424"",
+                    ""id"": ""cdb1f3d9-37eb-49fb-ad01-2519241b8ab4"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""OnEcho"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99adf6c4-9ecc-4f6f-af07-0260785e46ac"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OnInteract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -164,6 +184,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_OnDash = m_Player.FindAction("OnDash", throwIfNotFound: true);
         m_Player_OnMouseMove = m_Player.FindAction("OnMouseMove", throwIfNotFound: true);
         m_Player_OnEcho = m_Player.FindAction("OnEcho", throwIfNotFound: true);
+        m_Player_OnInteract = m_Player.FindAction("OnInteract", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,6 +250,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_OnDash;
     private readonly InputAction m_Player_OnMouseMove;
     private readonly InputAction m_Player_OnEcho;
+    private readonly InputAction m_Player_OnInteract;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -237,6 +259,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @OnDash => m_Wrapper.m_Player_OnDash;
         public InputAction @OnMouseMove => m_Wrapper.m_Player_OnMouseMove;
         public InputAction @OnEcho => m_Wrapper.m_Player_OnEcho;
+        public InputAction @OnInteract => m_Wrapper.m_Player_OnInteract;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +281,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @OnEcho.started += instance.OnOnEcho;
             @OnEcho.performed += instance.OnOnEcho;
             @OnEcho.canceled += instance.OnOnEcho;
+            @OnInteract.started += instance.OnOnInteract;
+            @OnInteract.performed += instance.OnOnInteract;
+            @OnInteract.canceled += instance.OnOnInteract;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -274,6 +300,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @OnEcho.started -= instance.OnOnEcho;
             @OnEcho.performed -= instance.OnOnEcho;
             @OnEcho.canceled -= instance.OnOnEcho;
+            @OnInteract.started -= instance.OnOnInteract;
+            @OnInteract.performed -= instance.OnOnInteract;
+            @OnInteract.canceled -= instance.OnOnInteract;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -297,5 +326,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnOnDash(InputAction.CallbackContext context);
         void OnOnMouseMove(InputAction.CallbackContext context);
         void OnOnEcho(InputAction.CallbackContext context);
+        void OnOnInteract(InputAction.CallbackContext context);
     }
 }

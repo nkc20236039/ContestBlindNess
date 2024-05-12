@@ -1,67 +1,74 @@
-using Alchemy.Inspector;
+using PlayerMotion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using Parameter;
+using Player.State;
 
-public enum PlayerStateType
+namespace Player
 {
-    Idel,
-    Move,
-    Dash
-}
-
-public class Player : MonoBehaviour
-{
-    [LabelText("プレイヤーのデータ"), SerializeField]
-    private PlayerData playerData;
-    [LabelText("プレイヤーの頭"), SerializeField]
-    private GameObject playerHead;
-
-    private PlayerContext context;
-    private StateMachine stateMachine;
-    private PlayerInputAction inputAction;
-    private Rigidbody playerRigidbody;
-    private PlayerMouseMove mouseMove;
-    private bool isEcho;
-
-    private void Start()
+    public enum PlayerStateType
     {
-        inputAction = new PlayerInputAction();
-        inputAction.Enable();
-        playerRigidbody = GetComponent<Rigidbody>();
-        context = new PlayerContext(playerData,inputAction,playerRigidbody,playerHead.transform);
-        stateMachine = new StateMachine(this);
-        stateMachine.Register(PlayerStateType.Idel, new PlayerIdelState(context));
-        stateMachine.Register(PlayerStateType.Move, new PlayerMoveState(context));
-        stateMachine.Register(PlayerStateType.Dash, new PlayerDashState(context));
-        stateMachine.Enable(PlayerStateType.Idel);
-        mouseMove = new PlayerMouseMove(context);
+        Idel,
+        Move,
+        Dash
     }
 
-    private void Update()
+    public class Player : MonoBehaviour
     {
-        stateMachine.CurrentState.OnUpdate();
-        playerHead.transform.rotation = mouseMove.MouseMove();
-    }
+        [SerializeField]
+        private PlayerData playerData;
+        [SerializeField]
+        private GameObject playerHead;
 
-    private void FixedUpdate()
-    {
-        stateMachine.CurrentState.OnFixedUpdate();
-    }
+        private PlayerContext context;
+        private StateMachine stateMachine;
+        private PlayerInputAction inputAction;
+        private Rigidbody playerRigidbody;
+        private PlayerMouseMove mouseMove;
+        private EchoProcess echoProcess;
+        private GimmickProcess gimmickProcess;
+        private MotionCreator motionCreator;
 
-    private void OnDestroy()
-    {
-        stateMachine.Disable();
-        stateMachine = null;
-    }
-
-    public void OnEcho(InputAction.CallbackContext context)
-    {
-        if(playerData.EchoCoolTime == 0)
+        private void Awake()
         {
-            isEcho = true;
-            //アウトライン表示
+            inputAction = new PlayerInputAction();
+            inputAction.Enable();
+            playerRigidbody = GetComponent<Rigidbody>();
+            motionCreator = new MotionCreator();
+        }
+
+        private void Start()
+        {
+            context = new PlayerContext(playerData, inputAction, playerRigidbody, playerHead,motionCreator);
+            stateMachine = new StateMachine(this);
+            stateMachine.Register(PlayerStateType.Idel, new PlayerIdelState(context));
+            stateMachine.Register(PlayerStateType.Move, new PlayerMoveState(context));
+            stateMachine.Register(PlayerStateType.Dash, new PlayerDashState(context));
+            stateMachine.Enable(PlayerStateType.Idel);
+            mouseMove = new PlayerMouseMove(context);
+            echoProcess = new EchoProcess(context);
+            gimmickProcess = new GimmickProcess(context);
+        }
+
+        private void Update()
+        {
+            stateMachine.CurrentState.OnUpdate();
+            playerHead.transform.rotation = mouseMove.MouseMove();
+            echoProcess.EchoCoolTime();
+        }
+
+        private void FixedUpdate()
+        {
+            stateMachine.CurrentState.OnFixedUpdate();
+        }
+
+        private void OnDestroy()
+        {
+            stateMachine.Disable();
+            stateMachine = null;
         }
     }
 }
+
+

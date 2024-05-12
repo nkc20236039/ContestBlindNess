@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using PlayerMotion;
+using Parameter;
 
 public class PlayerMovement
 {
@@ -10,10 +12,10 @@ public class PlayerMovement
     private PlayerData playerData;
     private PlayerMovementSetting setting;
 
-    public PlayerMovement(PlayerContext context,
-        Action<InputAction.CallbackContext> OnMve)
+    public PlayerMovement(PlayerContext context,Action<InputAction.CallbackContext> OnMve,PlayerMovementSetting setting)
     {
         this.context = context;
+        this.setting = setting;
         playerData = context.playerData;
 
         try
@@ -32,22 +34,22 @@ public class PlayerMovement
         Vector3 velocity = setting.Velocity;
         //ƒJƒƒ‰‚ÌŒü‚«‚ðŽæ“¾
         Vector3 cameraFoward = Vector3.Scale(
-            context.playerHeadTransform.forward,
+            context.playerHead.transform.forward,
             new Vector3(1, 0, 1)
             ).normalized;
 
-        float zSpeed = (0 > setting.InputDirection.z) ?
-            playerData.FowardSpeed : playerData.BuckSpeed;
+        float zSpeed = (0 < setting.InputDirection.z) ?
+            setting.Speed.Front : setting.Speed.Back;
 
         velocity = cameraFoward 
             * zSpeed 
             * setting.InputDirection.z;
 
-        velocity += context.playerHeadTransform.right
+        velocity += context.playerHead.transform.right
             * setting.InputDirection.x
-            * playerData.SideSpeed;
+            * setting.Speed.Side;
 
-        return velocity;
+        return velocity * Time.deltaTime;
     }
 }
 
@@ -55,10 +57,13 @@ public class PlayerMovementSetting
 {
     public Vector3 InputDirection { get; private set; }
     public Vector3 Velocity { get; private set; }
+    public MoveSpeed Speed { get; private set; }
+    public MotionCreator Creator { get; private set; }
 
-    public void MovementSetting(Vector3 inputDirection, Vector3 velocity)
+    public void MovementSetting(Vector3 inputDirection, Vector3 velocity, MoveSpeed speed)
     {
         InputDirection = inputDirection;
         Velocity = velocity;
+        Speed = speed;
     }
 }

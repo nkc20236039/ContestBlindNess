@@ -12,15 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e940673ffb6704b932797a5c12dbff, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
-  fowardSpeed: 0
-  buckSpeed: 0
-  sideSpeed: 0
-  dashSpeed: 0
-  expendStamina: 0
-  recoverStamina: 0
-  coolDownStamina: 0
-  maxStamina: 0
-  echoDistance: 0
-  echoSpped: 0
-  echoCoolTime: 0
-  interactDistance: 0
+  defaultFoward: 250
+  defaultBuck: 5
+  defaultSide: 10
+  dashFoward: 1000
+  dashBuck: 10
+  dashSide: 20
+  expendStamina: 1
+  recoverStamina: 3
+  coolDownStamina: 5
+  maxStamina: 5
+  echoDistance: 3
+  echoSpped: 3
+  echoCoolTime: 3
+  verticalSpeed: 0.5
+  horizontalSpeed: 0.5
+  interactDistance: 5
+  InteractLayer:
+    serializedVersion: 2
+    m_Bits: 64
