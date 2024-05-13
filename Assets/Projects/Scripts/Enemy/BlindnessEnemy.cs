@@ -4,38 +4,42 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BlindnessEnemy : MonoBehaviour
+namespace Enemy
 {
-    [SerializeField][Header("エネミーのデータ")]
-    private EnemyData enemyData;
-    [SerializeField] Player.Player player;
-
-    private NavMeshAgent agent;
-
-    private void Start()
+    public class BlindnessEnemy : MonoBehaviour
     {
-        agent = GetComponent<NavMeshAgent>();
-        SetSearchPoint();
-    }
+        [SerializeField]
+        [Header("エネミーのデータ")]
+        private EnemyData enemyData;
+        [SerializeField] Player.Player player;
 
-    private void Update()
-    {
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        private NavMeshAgent agent;
+
+        private void Start()
         {
+            agent = GetComponent<NavMeshAgent>();
             SetSearchPoint();
         }
-    }
 
-    private void SetSearchPoint()
-    {
-        int x = Random.Range(0, enemyData.SearchPoint.Length);
-        agent.destination = enemyData.SearchPoint[x];
-        agent.speed = enemyData.SearchSpeed;
-    }
+        private void Update()
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                SetSearchPoint();
+            }
+        }
 
-    public void ChaseePoint()
-    {
-        agent.destination = player.transform.position;
-        agent.speed = enemyData.ChaseeSpeed;
+        private void SetSearchPoint()
+        {
+            int x = Random.Range(0, enemyData.SearchPoint.Length);
+            agent.destination = enemyData.SearchPoint[x];
+            agent.speed = enemyData.SearchSpeed;
+        }
+
+        public void ChasePoint()
+        {
+            agent.destination = player.transform.position;
+            agent.speed = enemyData.ChaseSpeed;
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Parameter;
+using Enemy;
 
 namespace Player
 {
@@ -48,7 +49,7 @@ namespace Player
             if (context.started)
             {
                 PlayEcho();
-                enemy.ChaseePoint();
+                enemy.ChasePoint();
             }
         }
     }

@@ -15,5 +15,5 @@ public class EnemyData : ScriptableObject
 
     [SerializeField][Header("’ÇÕŽž‚Ì‘¬‚³")]
     private float chaseSpeed;
-    public float ChaseeSpeed => chaseSpeed;
+    public float ChaseSpeed => chaseSpeed;
 }
