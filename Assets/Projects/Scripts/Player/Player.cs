@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Parameter;
 using Player.State;
+using System;
 
 namespace Player
 {
@@ -20,6 +21,8 @@ namespace Player
         private PlayerData playerData;
         [SerializeField]
         private GameObject playerHead;
+        [SerializeField]
+        private BlindnessEnemy enemy;
 
         private PlayerContext context;
         private StateMachine stateMachine;
@@ -47,7 +50,7 @@ namespace Player
             stateMachine.Register(PlayerStateType.Dash, new PlayerDashState(context));
             stateMachine.Enable(PlayerStateType.Idel);
             mouseMove = new PlayerMouseMove(context);
-            echoProcess = new EchoProcess(context);
+            echoProcess = new EchoProcess(context,enemy);
             gimmickProcess = new GimmickProcess(context);
         }
 

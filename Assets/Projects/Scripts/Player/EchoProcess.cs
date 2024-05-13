@@ -10,10 +10,12 @@ namespace Player
     public class EchoProcess
     {
         private PlayerData playerData;
+        private BlindnessEnemy enemy;
 
-        public EchoProcess(PlayerContext context)
+        public EchoProcess(PlayerContext context, BlindnessEnemy enemy)
         {
             this.playerData = context.playerData;
+            this.enemy = enemy;
 
             context.inputActions.Player.OnEcho.started += OnEcho;
             context.inputActions.Player.OnEcho.canceled += OnEcho;
@@ -46,6 +48,7 @@ namespace Player
             if (context.started)
             {
                 PlayEcho();
+                enemy.ChaseePoint();
             }
         }
     }
