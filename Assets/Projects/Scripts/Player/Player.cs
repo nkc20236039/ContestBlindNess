@@ -14,7 +14,7 @@ namespace Player
         Dash
     }
 
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour,IPlayer
     {
         [SerializeField]
         private PlayerData playerData;
@@ -29,6 +29,15 @@ namespace Player
         private EchoProcess echoProcess;
         private GimmickProcess gimmickProcess;
         private MotionCreator motionCreator;
+        private KeyGimmickType hasGimickType = KeyGimmickType.None;
+        public KeyGimmickType HasKeyType 
+        { 
+            get => hasGimickType;
+            set 
+            { 
+                hasGimickType = value; 
+            }
+        }
 
         private void Awake()
         {

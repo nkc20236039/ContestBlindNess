@@ -60,6 +60,7 @@ public class GimmickProcess
 
         if(context.canceled && oldInteract.transform.gameObject == hitInteract.transform.gameObject)
         {
+            Debug.Log("PlayGimmick");
             oldInteract.transform.GetComponent<IGimmick>().PlayGimmick();
         }
     }
