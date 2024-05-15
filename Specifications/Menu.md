@@ -32,5 +32,36 @@
 
 </details>
 
+# アイテム
+<details>
+
+## 概要
+ステージ内には**拾うことができる**オブジェクトが存在する。
+使用用途については、誘導に使うものやギミックのクリアに必要なものなど様々。
+
+### 目次
+
+ - [アイテムを拾う](/Specifications/Item/PickUpItem.md)
+ - [投擲物](/Specifications/Item/ThrowingObject.md)
+
+</details>
+
+
+
+# タスク
+<details>
+
+## 概要
+ゲームのクリアに必要なタスク。これをクリアすることでゲートが開き先に進めるようになる。
+基本的にすでにギミックの役割を終えたものにはアクション出来なくすること。
+なお、タスクの種類はステージによって異なる。内容は以下を参照。
+
+### 目次
+
+ - [タスク１:フィット](/Specifications/Task/Task1_Fit.md)
+ - [タスク２:ターン](/Specifications/Task/Task2_Turn.md)
+
+</details>
+
 ## その他
 - [エコー](/Specifications/Echo.md)
