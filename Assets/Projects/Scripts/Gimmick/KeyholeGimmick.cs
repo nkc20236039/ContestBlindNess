@@ -9,29 +9,32 @@ public class KeyholeGimmick : MonoBehaviour, IGimmick
     //ほんとはIPlayerから持ってくる予定
     [SerializeField]
     Player.Player player;
-    private bool isFinish = false;
+    private bool isFinish;
 
-    public void PlayGimmick()
+    public void CancelGimmick()
     {
-        if (isFinish) 
+        if (isFinish)
         {
             Debug.Log("このタスクは終了しています");
-            return; 
+            return;
         }
 
-        if(player.HasKeyType == type)
+        if (player.HasKeyType == type)
         {
             //TaskManegerに連絡
             Debug.Log("タスククリア");
+            player.HasKeyType = KeyGimmickType.None;
             isFinish = true;
             return;
         }
 
-        if(player.HasKeyType != type)
+        if (player.HasKeyType != type)
         {
-            Debug.Log($"違うタイプです"); 
+            Debug.Log($"違うタイプです");
             return;
         }
-
     }
+
+    public void StartGimmick(){}
+    public void StopGimmick(){}
 }

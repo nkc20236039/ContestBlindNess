@@ -9,11 +9,9 @@ public class GimmickProcess
 {
     private PlayerContext playercontext;
     private PlayerData playerData;
-    private IGimmick gimmick;
     private RaycastHit hitInteract;
     private RaycastHit oldInteract;
     private bool isHit;
-    private bool isInteract;
 
     public GimmickProcess(PlayerContext context)
     {
@@ -35,33 +33,31 @@ public class GimmickProcess
     {
         isHit = Physics.Raycast(
             playercontext.playerHead.transform.position,
-            playercontext.playerHead.transform.forward,
+            playercontext.playerHead.transform.forward * playerData.InteractDistance,
             out hitInteract,
             playerData.InteractDistance,
             playerData.InteractLayer);
 
-        Debug.DrawRay(
-            playercontext.playerHead.transform.position,
-            playercontext.playerHead.transform.forward,
-            Color.red,
-            playerData.InteractDistance);
+        //Debug.DrawRay(
+        //    playercontext.playerHead.transform.position,
+        //    playercontext.playerHead.transform.forward *playerData.InteractDistance,
+        //    Color.red,
+        //    playerData.InteractDistance);
 
-        if (!isHit) { return; }
-
-        if (context.started)
+        if (context.started && isHit)
         {
             oldInteract = hitInteract;
-        }
-
-        if(oldInteract.transform.gameObject == null)
-        {
+            hitInteract.transform.GetComponent<IGimmick>().StartGimmick();
             return;
         }
 
-        if(context.canceled && oldInteract.transform.gameObject == hitInteract.transform.gameObject)
+        if (context.canceled && oldInteract.transform == hitInteract.transform)
         {
-            Debug.Log("PlayGimmick");
-            oldInteract.transform.GetComponent<IGimmick>().PlayGimmick();
+            hitInteract.transform.GetComponent<IGimmick>().CancelGimmick();
+        }
+        else
+        { 
+            oldInteract.transform.GetComponent<IGimmick>().StopGimmick();
         }
     }
 }

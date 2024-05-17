@@ -27,7 +27,8 @@ MonoBehaviour:
   echoCoolTime: 3
   verticalSpeed: 0.5
   horizontalSpeed: 0.5
-  interactDistance: 5
+  interactDistance: 10
   InteractLayer:
     serializedVersion: 2
     m_Bits: 64
+  hasKeyPoint: {x: 1, y: -1, z: 1}

@@ -131,5 +131,9 @@ namespace Parameter
         public float InteractDistance => interactDistance;
 
         public LayerMask InteractLayer;
+
+        [SerializeField][Header("Key‚ðŽ‚ÂêŠ")]
+        private Vector3 hasKeyPoint;
+        public Vector3 HasKeyPoint => hasKeyPoint;
     }
 }

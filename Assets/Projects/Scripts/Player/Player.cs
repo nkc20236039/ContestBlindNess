@@ -29,6 +29,7 @@ namespace Player
         private EchoProcess echoProcess;
         private GimmickProcess gimmickProcess;
         private MotionCreator motionCreator;
+
         private KeyGimmickType hasGimickType = KeyGimmickType.None;
         public KeyGimmickType HasKeyType 
         { 
@@ -38,6 +39,7 @@ namespace Player
                 hasGimickType = value; 
             }
         }
+        public Vector3 HasKeyPoint => playerData.HasKeyPoint;
 
         private void Awake()
         {

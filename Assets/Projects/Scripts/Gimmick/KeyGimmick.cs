@@ -20,10 +20,13 @@ public class KeyGimmick : MonoBehaviour, IGimmick
     [SerializeField]
     Player.Player player;
 
-    public void PlayGimmick()
+    public void CancelGimmick()
     {
         Debug.Log($"{player.HasKeyType}Ç©ÇÁ{type}Ç…éùÇøë÷Ç¶");
-        player.HasKeyType = type;       
+        player.HasKeyType = type;
         return;
     }
+
+    public void StartGimmick(){}
+    public void StopGimmick(){}
 }
