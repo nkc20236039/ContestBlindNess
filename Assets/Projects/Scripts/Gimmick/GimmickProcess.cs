@@ -12,11 +12,13 @@ public class GimmickProcess
     private RaycastHit hitInteract;
     private RaycastHit oldInteract;
     private bool isHit;
+    private GameObject playerHead;
 
     public GimmickProcess(PlayerContext context)
     {
         playerData = context.playerData;
         playercontext = context;
+        playerHead = context.playerCamera;
 
         try
         {
@@ -32,17 +34,17 @@ public class GimmickProcess
     private void OnInteract(InputAction.CallbackContext context)
     {
         isHit = Physics.Raycast(
-            playercontext.playerHead.transform.position,
-            playercontext.playerHead.transform.forward * playerData.InteractDistance,
+            playercontext.playerCamera.transform.position,
+            playercontext.playerCamera.transform.forward * playerData.InteractDistance,
             out hitInteract,
             playerData.InteractDistance,
             playerData.InteractLayer);
 
-        //Debug.DrawRay(
-        //    playercontext.playerHead.transform.position,
-        //    playercontext.playerHead.transform.forward *playerData.InteractDistance,
-        //    Color.red,
-        //    playerData.InteractDistance);
+        Debug.DrawRay(
+            playercontext.playerCamera.transform.position,
+            playercontext.playerCamera.transform.forward * playerData.InteractDistance,
+            Color.red,
+            playerData.InteractDistance);
 
         if (context.started && isHit)
         {
@@ -53,7 +55,11 @@ public class GimmickProcess
 
         if (context.canceled && oldInteract.transform == hitInteract.transform)
         {
-            hitInteract.transform.GetComponent<IGimmick>().CancelGimmick();
+            hitInteract.transform.GetComponent<IGimmick>().CancelGimmick(playerHead);
+        }
+        else if(oldInteract.transform == null)
+        {
+            Debug.Log("qqqq");
         }
         else
         { 

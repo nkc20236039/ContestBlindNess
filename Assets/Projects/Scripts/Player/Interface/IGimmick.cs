@@ -17,5 +17,5 @@ public interface IGimmick
     /// <summary>
     /// ƒ{ƒ^ƒ“‚ª—£‚³‚ê‚½‚Æ‚«
     /// </summary>
-    public void CancelGimmick();
+    public void CancelGimmick(GameObject gameObject);
 }

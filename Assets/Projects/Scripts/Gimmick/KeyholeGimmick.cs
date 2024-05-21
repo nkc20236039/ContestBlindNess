@@ -11,18 +11,17 @@ public class KeyholeGimmick : MonoBehaviour, IGimmick
     Player.Player player;
     private bool isFinish;
 
-    public void CancelGimmick()
+    public void CancelGimmick(GameObject playerCamera)
     {
         if (isFinish)
         {
-            Debug.Log("このタスクは終了しています");
             return;
         }
 
         if (player.HasKeyType == type)
         {
             //TaskManegerに連絡
-            Debug.Log("タスククリア");
+            Destroy(playerCamera.transform.GetChild(0).gameObject);
             player.HasKeyType = KeyGimmickType.None;
             isFinish = true;
             return;
@@ -30,7 +29,6 @@ public class KeyholeGimmick : MonoBehaviour, IGimmick
 
         if (player.HasKeyType != type)
         {
-            Debug.Log($"違うタイプです");
             return;
         }
     }

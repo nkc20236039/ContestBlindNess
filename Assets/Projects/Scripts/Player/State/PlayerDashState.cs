@@ -21,7 +21,7 @@ namespace Player.State
             playerRigidbody.velocity
                = motionCreator.
                Create(inputDirection).
-               ObjectView(context.playerHead).
+               ObjectView(context.playerCamera).
                PlaneMotion().
                AdvancedForSpeed(
                    playerData.DashSpeed.Front,

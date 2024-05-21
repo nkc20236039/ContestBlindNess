@@ -20,6 +20,8 @@ namespace Player
         private PlayerData playerData;
         [SerializeField]
         private GameObject playerHead;
+        [SerializeField]
+        private GameObject mainCamera;
 
         private PlayerContext context;
         private StateMachine stateMachine;
@@ -31,15 +33,9 @@ namespace Player
         private MotionCreator motionCreator;
 
         private KeyGimmickType hasGimickType = KeyGimmickType.None;
-        public KeyGimmickType HasKeyType 
-        { 
-            get => hasGimickType;
-            set 
-            { 
-                hasGimickType = value; 
-            }
-        }
+        public KeyGimmickType HasKeyType { get; set; }
         public Vector3 HasKeyPoint => playerData.HasKeyPoint;
+
 
         private void Awake()
         {
@@ -51,7 +47,7 @@ namespace Player
 
         private void Start()
         {
-            context = new PlayerContext(playerData, inputAction, playerRigidbody, playerHead,motionCreator);
+            context = new PlayerContext(playerData, inputAction, playerRigidbody, mainCamera, motionCreator);
             stateMachine = new StateMachine(this);
             stateMachine.Register(PlayerStateType.Idel, new PlayerIdelState(context));
             stateMachine.Register(PlayerStateType.Move, new PlayerMoveState(context));
