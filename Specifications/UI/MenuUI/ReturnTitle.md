@@ -1,4 +1,5 @@
 # タイトルに戻る
+![タイトルに戻る](/Specifications/images/MenuUI/ConfirmDisplay.png)
 
 ## 基本挙動
 

@@ -1,34 +1,10 @@
-# プレイヤー
-<details>
-
-## 操作デフォルトキー
-移動：WASD
-走り：Shift
-エコー：左クリック
-アクション：E
-メニュー：Escape(esc)
-
-## 目次
-### プレイヤー
+# 目次
+## プレイヤー
 - [歩き](/Specifications/Player/Walk.md)
 - [走り](/Specifications/Player/Dash.md)
 - [視点操作](/Specifications/Player/View.md)
-- [インタラクト](/Specifications/Player/Interact.md)
+- [アクション](/Specifications/Player/Action.md)
 - [手の動作](/Specifications/Player/Hand.md)
-- [エコー](/Specifications/Echo.md)
-
-# デバッグ
-1. プレイヤーの現在の速度をGUIWindowに表示する(単位：m/s)
-2. ダッシュ制限無効にする切り替え
-3. ダッシュ無制限の場合に本来のダッシュで増減する値をGUIWindowに表示する  
-ダッシュに関して表示する項目
-    - ダッシュ中かどうか
-    - ダッシュ可能か
-    - 現在のスタミナ
-
-</details>
-
-
 ## 敵
 - [通常時AI](/Specifications/Enemy/DefaultAI.md)
 - [追跡時AI](/Specifications/Enemy/trackingAI.md)
@@ -38,7 +14,7 @@
 
 ## 概要
 
-ユーザーへの情報を視覚的に伝える。インタラクト時や照準,メニュー画面など。
+ユーザーへの情報を視覚的に伝える。アクション時や照準、メニュー画面など。
 
 ## 目次
 
@@ -46,12 +22,46 @@
 - [メニュー画面](/Specifications/UI/MenuUI/MenuDisplay.md)
   - [ゲームに戻る](/Specifications/UI/MenuUI/ReturnGame.md)
   - [リスタート](/Specifications/UI/MenuUI/ReStart.md)
-  - [オプション]
+  - [オプション](/Specifications/UI/MenuUI/Option.md)
   - [タイトルに戻る](/Specifications/UI/MenuUI/ReturnTitle.md)
 
 ### プレイヤーUI
 - [ダッシュゲージ](/Specifications/UI/PlayerUI/DashGage.md)
-- [インタラクトガイド](/Specifications/UI/PlayerUI/ActionGuide.md)
+- [アクションガイド](/Specifications/UI/PlayerUI/ActionGuide.md)
 - [照準](/Specifications/UI/PlayerUI/CrossHair.md)
 
 </details>
+
+# アイテム
+<details>
+
+## 概要
+ステージ内には**拾うことができる**オブジェクトが存在する。
+使用用途については、誘導に使うものやギミックのクリアに必要なものなど様々。
+
+### 目次
+
+ - [アイテムを拾う](/Specifications/Item/PickUpItem.md)
+ - [投擲物](/Specifications/Item/ThrowingObject.md)
+
+</details>
+
+
+
+# タスク
+<details>
+
+## 概要
+ゲームのクリアに必要なタスク。これをクリアすることでゲートが開き先に進めるようになる。
+基本的にすでにギミックの役割を終えたものにはアクション出来なくすること。
+なお、タスクの種類はステージによって異なる。内容は以下を参照。
+
+### 目次
+
+ - [タスク１:フィット](/Specifications/Task/Task1_Fit.md)
+ - [タスク２:ターン](/Specifications/Task/Task2_Turn.md)
+
+</details>
+
+## その他
+- [エコー](/Specifications/Echo.md)
