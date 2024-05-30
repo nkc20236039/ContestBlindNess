@@ -1,10 +1,29 @@
-# 目次
-## プレイヤー
+# プレイヤー
+<details>
+
+## デフォルトキーコンフィグ
+|行動|キー|
+|-|-|
+|移動|W A S D|
+|走り|LShift|
+|エコーロケーション|左クリック|
+|アクション|E|
+|メニュー|Escape(esc)|
+
+## 目次
 - [歩き](/Specifications/Player/Walk.md)
 - [走り](/Specifications/Player/Dash.md)
 - [視点操作](/Specifications/Player/View.md)
 - [アクション](/Specifications/Player/Action.md)
 - [手の動作](/Specifications/Player/Hand.md)
+
+## デバッグ
+- プレイヤーの速度をデバッグ用ウィンドウに表示する(単位：m/s)
+- ダッシュ制限を無効化する機能を実装し、切り替えられるようにする
+- ダッシュ無制限の場合、さらに次のことをデバッグ用ウィンドウに表示する
+
+</details>
+
 ## 敵
 - [通常時AI](/Specifications/Enemy/DefaultAI.md)
 - [追跡時AI](/Specifications/Enemy/trackingAI.md)
