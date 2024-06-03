@@ -1,9 +1,10 @@
 # メニュー画面
+![メニュー画面](/Specifications/images/MenuUI/MenuDisplay.png)
 
 ## 基本挙動
 1. 項目として以下の要素をボタンで用意する
     - ゲームに戻る
-    - リスタート
+    - セーブ
     - オプション
     - タイトルに戻る  
 
@@ -13,5 +14,5 @@
 ### 参考リンク
 - [ゲームに戻る](/Specifications/UI/MenuUI/ReturnGame.md)
 - [リスタート](/Specifications/UI/MenuUI/ReStart.md)
-- [オプション]
+- [オプション](/Specifications/UI/MenuUI/Option.md)
 - [タイトルに戻る](/Specifications/UI/MenuUI/ReturnTitle.md)
