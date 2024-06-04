@@ -46,7 +46,12 @@ namespace Parameter
 
         public MoveSpeed DashSpeed
             => new MoveSpeed(dashFoward, dashBuck, dashSide);
-
+#if DEBUG
+        public bool isDebug;
+        public bool canDash;
+        public float moveSpeed;
+        public float staminaConsumption;
+#endif
 
         [SerializeField]
         [Header("スタミナ切れの回復速度")]

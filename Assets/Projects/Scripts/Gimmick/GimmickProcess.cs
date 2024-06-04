@@ -40,12 +40,13 @@ public class GimmickProcess
             playerData.InteractDistance,
             playerData.InteractLayer);
 
+#if DEBUG
         Debug.DrawRay(
             playercontext.playerCamera.transform.position,
             playercontext.playerCamera.transform.forward * playerData.InteractDistance,
             Color.red,
             playerData.InteractDistance);
-
+#endif
         if (context.started && isHit)
         {
             oldInteract = hitInteract;
@@ -56,10 +57,6 @@ public class GimmickProcess
         if (context.canceled && oldInteract.transform == hitInteract.transform)
         {
             hitInteract.transform.GetComponent<IGimmick>().CancelGimmick(playerHead);
-        }
-        else if(oldInteract.transform == null)
-        {
-            Debug.Log("qqqq");
         }
         else
         { 

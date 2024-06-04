@@ -10,6 +10,9 @@ namespace Player.State
 
         public override void OnEnter()
         {
+#if DEBUG
+            playerData.moveSpeed = playerData.DashSpeed.Front;
+#endif
         }
 
         public override void OnExit()
