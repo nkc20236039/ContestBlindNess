@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Parameter;
 using Player.State;
+using Enemy;
+using System;
 
 namespace Player
 {
@@ -61,7 +63,7 @@ namespace Player
 
             stateMachine.Enable(PlayerStateType.Idel);
             mouseMove = new PlayerMouseMove(context);
-            echoProcess = new EchoProcess(context);
+            echoProcess = new EchoProcess(context,enemy);
             gimmickProcess = new GimmickProcess(context);
         }
 
