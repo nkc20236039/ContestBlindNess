@@ -14,5 +14,5 @@
 |-|-|-|
 |徘徊時の移動速度|float|m/s|
 |追跡時(音を聞いたとき)の移動速度|float|m/s|
-|接触判定の広さ|float|radius|
-|徘徊地点設定|Vector3(設定はTransformでも可)|-|
+|接触判定の広さ|float|radius(m:メートル)|
+|徘徊地点設定|Transform(管理はVector3)|-|

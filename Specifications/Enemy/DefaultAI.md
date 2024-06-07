@@ -12,7 +12,7 @@
 # パラメータ
 |項目|変数型|単位|
 |-|-|-|
-|徘徊ポイントの設定|Vector3(設定はTransformでも可)|-|
+|徘徊ポイントの設定|Transform(管理はVector3)|-|
 |徘徊ポイントに到達したときに待機する時間|float|s(秒)|
 |通常時の移動速度|float|m/s|
-|接触範囲設定|float|radius|
+|接触範囲設定|float|radius(m:メートル)|
