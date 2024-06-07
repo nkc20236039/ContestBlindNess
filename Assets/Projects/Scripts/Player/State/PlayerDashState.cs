@@ -10,6 +10,9 @@ namespace Player.State
 
         public override void OnEnter()
         {
+#if DEBUG
+            playerData.moveSpeed = playerData.DashSpeed.Front;
+#endif
         }
 
         public override void OnExit()
@@ -21,7 +24,7 @@ namespace Player.State
             playerRigidbody.velocity
                = motionCreator.
                Create(inputDirection).
-               ObjectView(context.playerHead).
+               ObjectView(context.playerCamera).
                PlaneMotion().
                AdvancedForSpeed(
                    playerData.DashSpeed.Front,

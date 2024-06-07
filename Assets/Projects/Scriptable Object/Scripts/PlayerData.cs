@@ -46,7 +46,12 @@ namespace Parameter
 
         public MoveSpeed DashSpeed
             => new MoveSpeed(dashFoward, dashBuck, dashSide);
-
+#if DEBUG
+        public bool isDebug;
+        public bool canDash;
+        public float moveSpeed;
+        public float staminaConsumption;
+#endif
 
         [SerializeField]
         [Header("スタミナ切れの回復速度")]
@@ -131,5 +136,9 @@ namespace Parameter
         public float InteractDistance => interactDistance;
 
         public LayerMask InteractLayer;
+
+        [SerializeField][Header("Keyを持つ場所")]
+        private Vector3 hasKeyPoint;
+        public Vector3 HasKeyPoint => hasKeyPoint;
     }
 }

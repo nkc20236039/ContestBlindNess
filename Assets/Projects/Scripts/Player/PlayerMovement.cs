@@ -34,7 +34,7 @@ public class PlayerMovement
         Vector3 velocity = setting.Velocity;
         //ƒJƒƒ‰‚ÌŒü‚«‚ğæ“¾
         Vector3 cameraFoward = Vector3.Scale(
-            context.playerHead.transform.forward,
+            context.playerCamera.transform.forward,
             new Vector3(1, 0, 1)
             ).normalized;
 
@@ -45,7 +45,7 @@ public class PlayerMovement
             * zSpeed 
             * setting.InputDirection.z;
 
-        velocity += context.playerHead.transform.right
+        velocity += context.playerCamera.transform.right
             * setting.InputDirection.x
             * setting.Speed.Side;
 

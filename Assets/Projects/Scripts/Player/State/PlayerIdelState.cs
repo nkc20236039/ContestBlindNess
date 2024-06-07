@@ -11,6 +11,10 @@ namespace Player.State
         public override void OnEnter()
         {
             playerRigidbody.velocity = Vector3.zero;
+
+#if DEBUG
+            playerData.moveSpeed = 0;
+#endif
         }
 
         public override void OnExit()

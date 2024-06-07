@@ -10,7 +10,9 @@ namespace Player.State
 
         public override void OnEnter()
         {
-
+#if DEBUG
+            playerData.moveSpeed = playerData.DefoltSpeed.Front;
+#endif
         }
 
         public override void OnExit()
@@ -23,7 +25,7 @@ namespace Player.State
             playerRigidbody.velocity
                 = motionCreator.
                 Create(inputDirection).
-                ObjectView(context.playerHead).
+                ObjectView(context.playerCamera).
                 PlaneMotion().
                 AdvancedForSpeed(
                     playerData.DefoltSpeed.Front,
@@ -38,6 +40,13 @@ namespace Player.State
             {
                 dashProcess.DashProcess();
             }
+#if DEBUG
+            if(isDash && playerData.isDebug)
+            {
+                StateChenge(PlayerStateType.Debug);
+                return;
+            }
+#endif 
 
             //スタミナが切れてなければ
             if (isDash && playerData.IsDisappear)

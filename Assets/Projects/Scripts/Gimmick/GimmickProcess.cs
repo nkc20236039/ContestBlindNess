@@ -9,16 +9,16 @@ public class GimmickProcess
 {
     private PlayerContext playercontext;
     private PlayerData playerData;
-    private IGimmick gimmick;
     private RaycastHit hitInteract;
     private RaycastHit oldInteract;
     private bool isHit;
-    private bool isInteract;
+    private GameObject playerHead;
 
     public GimmickProcess(PlayerContext context)
     {
         playerData = context.playerData;
         playercontext = context;
+        playerHead = context.playerCamera;
 
         try
         {
@@ -34,33 +34,33 @@ public class GimmickProcess
     private void OnInteract(InputAction.CallbackContext context)
     {
         isHit = Physics.Raycast(
-            playercontext.playerHead.transform.position,
-            playercontext.playerHead.transform.forward,
+            playercontext.playerCamera.transform.position,
+            playercontext.playerCamera.transform.forward * playerData.InteractDistance,
             out hitInteract,
             playerData.InteractDistance,
             playerData.InteractLayer);
 
+#if DEBUG
         Debug.DrawRay(
-            playercontext.playerHead.transform.position,
-            playercontext.playerHead.transform.forward,
+            playercontext.playerCamera.transform.position,
+            playercontext.playerCamera.transform.forward * playerData.InteractDistance,
             Color.red,
             playerData.InteractDistance);
-
-        if (!isHit) { return; }
-
-        if (context.started)
+#endif
+        if (context.started && isHit)
         {
             oldInteract = hitInteract;
-        }
-
-        if(oldInteract.transform.gameObject == null)
-        {
+            hitInteract.transform.GetComponent<IGimmick>().StartGimmick();
             return;
         }
 
-        if(context.canceled && oldInteract.transform.gameObject == hitInteract.transform.gameObject)
+        if (context.canceled && oldInteract.transform == hitInteract.transform)
         {
-            oldInteract.transform.GetComponent<IGimmick>().PlayGimmick();
+            hitInteract.transform.GetComponent<IGimmick>().CancelGimmick(playerHead);
+        }
+        else
+        { 
+            oldInteract.transform.GetComponent<IGimmick>().StopGimmick();
         }
     }
 }

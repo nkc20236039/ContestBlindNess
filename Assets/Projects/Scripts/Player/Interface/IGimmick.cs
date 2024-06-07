@@ -4,5 +4,18 @@ using UnityEngine;
 
 public interface IGimmick
 {
-    public void PlayGimmick();
+    /// <summary>
+    /// ボタンが押されたとき
+    /// </summary>
+    public void StartGimmick();
+
+    /// <summary>
+    /// ギミックを止めたいとき
+    /// </summary>
+    public void StopGimmick();
+
+    /// <summary>
+    /// ボタンが離されたとき
+    /// </summary>
+    public void CancelGimmick(GameObject gameObject);
 }
