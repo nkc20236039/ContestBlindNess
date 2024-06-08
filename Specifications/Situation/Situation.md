@@ -8,3 +8,6 @@
 
 ## カメラ揺れの大きさの目安
 ![カメラ揺れ](/Specifications/images/Situation/CameraShake.png)
+
+## カメラのぼかしの強度目安
+![ぼかしの強度](/Specifications/images/Situation/GaussIntensity.png)
