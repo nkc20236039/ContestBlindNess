@@ -11,3 +11,6 @@
 
 ## カメラのぼかしの強度目安
 ![ぼかしの強度](/Specifications/images/Situation/GaussIntensity.png)
+
+## 移動速度遷移の目安
+![移動速度遷移](/Specifications/images/Situation/MoveSpeed.png)
