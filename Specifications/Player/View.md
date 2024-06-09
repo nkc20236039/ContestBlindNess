@@ -10,8 +10,9 @@
 ![カメラシェイク](/Specifications/images/Player/CameraShake.png)
 
 # パラメータ
-
-1. マウスの感度調整
-2. 止まっている時のカメラの揺れ幅
-3. 歩行時のカメラの揺れ幅
-4. ダッシュ時のカメラの揺れ幅
+|項目|変数型|単位|
+|-|-|-|
+|マウス感度調整|float|Multiplier|
+|静止時のカメラの揺れ幅(縦,横)|float|Multipiler|
+|歩行時のカメラの揺れ幅(縦,横)|float|Multipiler|
+|ダッシュ時のカメラの揺れ幅(縦,横)|float|Multipiler|
