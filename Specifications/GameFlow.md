@@ -6,4 +6,4 @@
 3. タスクの終了を確認したら、再度次のタスクへの更新をかけ、同様にリスポーン地点を更新する。
 
 # フローチャート
-![GameFlow](/images/GameFlow/GameFlow.png)
+![GameFlow](/Specifications/images/GameFlow/GameFlow.png)
