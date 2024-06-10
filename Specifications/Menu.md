@@ -17,6 +17,7 @@
 - [アクション](/Specifications/Player/Action.md)
 - [手の動作](/Specifications/Player/Hand.md)
 - [エコー](/Specifications/Player/Echo.md)
+- [疲労](/Specifications/Player/Tired.md)
 
 ## デバッグ
 デバッグウィンドウはオブジェクト選択中に表示する
@@ -111,6 +112,8 @@
 
 ### 目次
  - [セーブとロード](/Specifications/Save&Load.md)
+ - [ゲームフロー](/Specifications/GameFlow.md)
+ - [シチュエーション](/Specifications/Situation/Situation.md)
 
 </details>
 <br/>
