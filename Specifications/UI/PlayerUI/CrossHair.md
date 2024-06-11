@@ -8,7 +8,7 @@
 2. あまり画面を占有しないようサイズは小さめに。
 
 # パラメータ
-1. 照準のインタラクト可能時の色設定
+1. 照準のアクション可能時の色設定
 
 ### 参考リンク
-- [インタラクト](/Specifications/Player/Interact.md)
+- [アクション](/Specifications/Player/Action.md)
